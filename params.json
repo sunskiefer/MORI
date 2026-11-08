@@ -1,0 +1,679 @@
+{
+ "name": "MORI",
+ "params": [
+  {
+   "key": "dry",
+   "name": "DRY",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "ovl",
+   "name": "DUB",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "dly",
+   "name": "DLY",
+   "min": 0,
+   "max": 100,
+   "default": 60,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "txt",
+   "name": "TXT",
+   "min": 0,
+   "max": 100,
+   "default": 70,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "master",
+   "name": "MASTER",
+   "min": 0,
+   "max": 100,
+   "default": 80,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "flt_cut",
+   "name": "CUTOFF",
+   "min": -100,
+   "max": 100,
+   "default": 0,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "flt_res",
+   "name": "RES",
+   "min": 0,
+   "max": 100,
+   "default": 0,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "flt_slope",
+   "name": "SLOPE",
+   "options": [
+    "12dB",
+    "24dB"
+   ],
+   "default": 0
+  },
+  {
+   "key": "flt_type",
+   "name": "TYPE",
+   "options": [
+    "LP+HP",
+    "BP"
+   ],
+   "default": 0
+  },
+  {
+   "key": "dl_l",
+   "name": "LEFT",
+   "options": [
+    "2 BAR",
+    "1 BAR",
+    "1/2",
+    "1/4",
+    "1/8",
+    "1/16",
+    "1/32",
+    "1/64",
+    "1 BAR.",
+    "1/2.",
+    "1/4.",
+    "1/8.",
+    "1/16.",
+    "1/32.",
+    "1/64.",
+    "1 BAR T",
+    "1/2 T",
+    "1/4 T",
+    "1/8 T",
+    "1/16 T",
+    "1/32 T",
+    "1/64 T"
+   ],
+   "default": 4
+  },
+  {
+   "key": "dl_r",
+   "name": "RIGHT",
+   "options": [
+    "2 BAR",
+    "1 BAR",
+    "1/2",
+    "1/4",
+    "1/8",
+    "1/16",
+    "1/32",
+    "1/64",
+    "1 BAR.",
+    "1/2.",
+    "1/4.",
+    "1/8.",
+    "1/16.",
+    "1/32.",
+    "1/64.",
+    "1 BAR T",
+    "1/2 T",
+    "1/4 T",
+    "1/8 T",
+    "1/16 T",
+    "1/32 T",
+    "1/64 T"
+   ],
+   "default": 11
+  },
+  {
+   "key": "dl_fb",
+   "name": "AMNESIA",
+   "min": 0,
+   "max": 100,
+   "default": 40,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "dl_fltfb",
+   "name": "FDBACK",
+   "min": -100,
+   "max": 100,
+   "default": 0,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "dl_mode",
+   "name": "MODE",
+   "options": [
+    "TAPE",
+    "JUMP"
+   ],
+   "default": 0
+  },
+  {
+   "key": "dl_tape",
+   "name": "TAPE AMT",
+   "min": 0,
+   "max": 100,
+   "default": 30,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "dl_off",
+   "name": "OFFSET",
+   "min": 0,
+   "max": 7,
+   "default": 0,
+   "display": "int"
+  },
+  {
+   "key": "tx_eng",
+   "name": "ENGINE",
+   "options": [
+    "M.HEAD",
+    "FRAGMENT"
+   ],
+   "default": 0
+  },
+  {
+   "key": "tx_heads",
+   "name": "HEADS",
+   "min": 2,
+   "max": 8,
+   "default": 4,
+   "display": "int"
+  },
+  {
+   "key": "tx_mode",
+   "name": "MODE",
+   "options": [
+    "MIXED",
+    "FWD",
+    "REV",
+    "FWD+REV",
+    "SLOW",
+    "FAST"
+   ],
+   "default": 0
+  },
+  {
+   "key": "tx_size",
+   "name": "SIZE",
+   "min": 0.25,
+   "max": 8,
+   "default": 2,
+   "unit": "s"
+  },
+  {
+   "key": "tx_flt",
+   "name": "TXT FLT",
+   "min": -100,
+   "max": 100,
+   "default": 0,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "tx_fxa",
+   "name": "TXT FX",
+   "min": 0,
+   "max": 100,
+   "default": 0,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "tx_fx",
+   "name": "EFFECT",
+   "options": [
+    "NONE",
+    "FOLD",
+    "CRUSH",
+    "RINGMOD"
+   ],
+   "default": 0
+  },
+  {
+   "key": "tx_boost",
+   "name": "BOOST",
+   "min": 0,
+   "max": 100,
+   "default": 0,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "tx_block",
+   "name": "BLOCK",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 0
+  },
+  {
+   "key": "fr_dens",
+   "name": "DENSITY",
+   "min": 5,
+   "max": 100,
+   "default": 50,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "fr_pitch",
+   "name": "PITCH",
+   "min": -24,
+   "max": 24,
+   "default": 0,
+   "display": "int",
+   "unit": "st"
+  },
+  {
+   "key": "fr_size",
+   "name": "GR SIZE",
+   "min": 10,
+   "max": 500,
+   "default": 150,
+   "display": "int",
+   "unit": "ms"
+  },
+  {
+   "key": "fr_spread",
+   "name": "SPREAD",
+   "min": 0,
+   "max": 100,
+   "default": 30,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "fr_prand",
+   "name": "P RAND",
+   "min": 0,
+   "max": 12,
+   "default": 0,
+   "display": "int",
+   "unit": "st"
+  },
+  {
+   "key": "fr_rev",
+   "name": "REVERSE",
+   "min": 0,
+   "max": 100,
+   "default": 0,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "fr_fb",
+   "name": "FDBACK",
+   "min": 0,
+   "max": 100,
+   "default": 0,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "ov_rec",
+   "name": "REC",
+   "options": [
+    "OFF",
+    "ADD",
+    "CHANGE",
+    "FORGET"
+   ],
+   "default": 0
+  },
+  {
+   "key": "ov_clear",
+   "name": "CLEAR",
+   "type": "trigger",
+   "momentary": true
+  },
+  {
+   "key": "ov_size",
+   "name": "DUB SIZE",
+   "min": 1,
+   "max": 16,
+   "default": 4,
+   "display": "int",
+   "unit": "beats"
+  },
+  {
+   "key": "rv_amt",
+   "name": "REV AMT",
+   "min": 0,
+   "max": 100,
+   "default": 30,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "rv_dim",
+   "name": "REV DIM",
+   "min": 0,
+   "max": 100,
+   "default": 50,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "rv_damp",
+   "name": "DAMP",
+   "min": 0,
+   "max": 100,
+   "default": 50,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "rv_type",
+   "name": "TYPE",
+   "options": [
+    "CLASSIC",
+    "HALL",
+    "ROOM",
+    "PLATE",
+    "CATHEDRAL"
+   ],
+   "default": 0
+  },
+  {
+   "key": "rv_pre",
+   "name": "PRE FLT",
+   "min": 0,
+   "max": 100,
+   "default": 0,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "rv_shim",
+   "name": "SHIM %",
+   "min": 0,
+   "max": 100,
+   "default": 0,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "mf_type",
+   "name": "M.FX",
+   "options": [
+    "OFF",
+    "EXCITER",
+    "TAPE SAT",
+    "TUBE"
+   ],
+   "default": 0
+  },
+  {
+   "key": "mf_amt",
+   "name": "M.AMT",
+   "min": 0,
+   "max": 100,
+   "default": 30,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "r_do",
+   "name": "DRY>OUT",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 1
+  },
+  {
+   "key": "r_dd",
+   "name": "DRY>DLY",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 1
+  },
+  {
+   "key": "r_dt",
+   "name": "DRY>TEX",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 1
+  },
+  {
+   "key": "r_dr",
+   "name": "DRY>REV",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 1
+  },
+  {
+   "key": "r_oo",
+   "name": "DUB>OUT",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 1
+  },
+  {
+   "key": "r_od",
+   "name": "DUB>DLY",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 1
+  },
+  {
+   "key": "r_ot",
+   "name": "DUB>TEX",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 1
+  },
+  {
+   "key": "r_or",
+   "name": "DUB>REV",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 1
+  },
+  {
+   "key": "r_ldo",
+   "name": "DLY>OUT",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 1
+  },
+  {
+   "key": "r_ldt",
+   "name": "DLY>TEX",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 1
+  },
+  {
+   "key": "r_ldr",
+   "name": "DLY>REV",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 1
+  },
+  {
+   "key": "r_to",
+   "name": "TXT>OUT",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 1
+  },
+  {
+   "key": "r_tr",
+   "name": "TXT>REV",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 1
+  },
+  {
+   "key": "r_td",
+   "name": "TXT>DLY",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 1
+  },
+  {
+   "key": "order",
+   "name": "ORDER",
+   "options": [
+    "DLY>TEX",
+    "TEX>DLY"
+   ],
+   "default": 0
+  }
+ ],
+ "sections": [
+  {
+   "label": "LEVELS",
+   "keys": [
+    "dry",
+    "ovl",
+    "dly",
+    "txt",
+    "master"
+   ]
+  },
+  {
+   "label": "FILTER",
+   "keys": [
+    "flt_cut",
+    "flt_res",
+    "flt_slope",
+    "flt_type"
+   ]
+  },
+  {
+   "label": "DELAY",
+   "keys": [
+    "dl_l",
+    "dl_r",
+    "dl_fb",
+    "dl_fltfb",
+    "dl_mode",
+    "dl_tape",
+    "dl_off"
+   ]
+  },
+  {
+   "label": "TEXTURE",
+   "keys": [
+    "tx_eng",
+    "tx_heads",
+    "tx_mode",
+    "tx_size",
+    "tx_flt",
+    "tx_fxa",
+    "tx_fx",
+    "tx_boost",
+    "tx_block"
+   ]
+  },
+  {
+   "label": "FRAGMENT",
+   "keys": [
+    "fr_dens",
+    "fr_pitch",
+    "fr_size",
+    "fr_spread",
+    "fr_prand",
+    "fr_rev",
+    "fr_fb"
+   ]
+  },
+  {
+   "label": "DUB",
+   "keys": [
+    "ov_rec",
+    "ov_clear",
+    "ov_size"
+   ]
+  },
+  {
+   "label": "REVERB",
+   "keys": [
+    "rv_amt",
+    "rv_dim",
+    "rv_damp",
+    "rv_type",
+    "rv_pre",
+    "rv_shim"
+   ]
+  },
+  {
+   "label": "MASTER FX",
+   "keys": [
+    "mf_type",
+    "mf_amt"
+   ]
+  },
+  {
+   "label": "ROUTING",
+   "keys": [
+    "r_do",
+    "r_dd",
+    "r_dt",
+    "r_dr",
+    "r_oo",
+    "r_od",
+    "r_ot",
+    "r_or",
+    "r_ldo",
+    "r_ldt",
+    "r_ldr",
+    "r_to",
+    "r_tr",
+    "r_td",
+    "order"
+   ]
+  }
+ ]
+}

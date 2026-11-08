@@ -1,0 +1,1176 @@
+{
+ "page_w": 1280,
+ "page_h": 558,
+ "note": "x,y,w,h in page pixels below the 70 px header; knobs and other controls, then each knob's separate text label (own x,y,w,h), then the module jack groups",
+ "pages": [
+  {
+   "screen": 0,
+   "items": [
+    {
+     "id": "dry",
+     "kind": "k",
+     "knob": "e",
+     "x": 12,
+     "y": 6,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "ovl",
+     "kind": "k",
+     "knob": "e",
+     "x": 500,
+     "y": 6,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "dly",
+     "kind": "k",
+     "knob": "e",
+     "x": 256,
+     "y": 6,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "txt",
+     "kind": "k",
+     "knob": "e",
+     "x": 743,
+     "y": 6,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "master",
+     "kind": "k",
+     "knob": "e",
+     "x": 987,
+     "y": 6,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "ov_rec",
+     "kind": "k",
+     "knob": "e",
+     "x": 108,
+     "y": 188,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "ov_size",
+     "kind": "k",
+     "knob": "e",
+     "x": 362,
+     "y": 188,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "ov_clear",
+     "kind": "b",
+     "x": 616,
+     "y": 188,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "tx_block",
+     "kind": "s",
+     "x": 870,
+     "y": 188,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "flt_cut",
+     "kind": "k",
+     "knob": "e",
+     "x": 1124,
+     "y": 188,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "flt_res",
+     "kind": "k",
+     "knob": "e",
+     "x": 23,
+     "y": 371,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "flt_slope",
+     "kind": "s",
+     "x": 275,
+     "y": 371,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "flt_type",
+     "kind": "s",
+     "x": 527,
+     "y": 371,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "mf_type",
+     "kind": "k",
+     "knob": "e",
+     "x": 779,
+     "y": 371,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "mf_amt",
+     "kind": "k",
+     "knob": "e",
+     "x": 1031,
+     "y": 371,
+     "w": 141,
+     "h": 141
+    }
+   ],
+   "labels": [
+    {
+     "id": "dry",
+     "text": "DRY",
+     "text_px": 36,
+     "x": -28,
+     "y": 137,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "ovl",
+     "text": "DUB",
+     "text_px": 36,
+     "x": 216,
+     "y": 137,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "dly",
+     "text": "DLY",
+     "text_px": 36,
+     "x": 460,
+     "y": 137,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "txt",
+     "text": "TXT",
+     "text_px": 36,
+     "x": 703,
+     "y": 137,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "master",
+     "text": "MASTER",
+     "text_px": 36,
+     "x": 947,
+     "y": 137,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "ov_rec",
+     "text": "REC",
+     "text_px": 36,
+     "x": 68,
+     "y": 320,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "ov_size",
+     "text": "DUB_SIZE",
+     "text_px": 36,
+     "x": 320,
+     "y": 320,
+     "w": 224,
+     "h": 48
+    },
+    {
+     "id": "ov_clear",
+     "text": "CLEAR",
+     "text_px": 36,
+     "x": 576,
+     "y": 320,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "tx_block",
+     "text": "BLOCK",
+     "text_px": 36,
+     "x": 830,
+     "y": 320,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "flt_cut",
+     "text": "CUTOFF",
+     "text_px": 36,
+     "x": 1084,
+     "y": 320,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "flt_res",
+     "text": "RES",
+     "text_px": 36,
+     "x": -17,
+     "y": 503,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "flt_slope",
+     "text": "SLOPE",
+     "text_px": 36,
+     "x": 235,
+     "y": 503,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "flt_type",
+     "text": "TYPE",
+     "text_px": 36,
+     "x": 487,
+     "y": 503,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "mf_type",
+     "text": "M_FX",
+     "text_px": 36,
+     "x": 739,
+     "y": 503,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "mf_amt",
+     "text": "M_FLT",
+     "text_px": 36,
+     "x": 991,
+     "y": 503,
+     "w": 221,
+     "h": 48
+    }
+   ],
+   "groups": [],
+   "images": [
+    {
+     "id": "img_1",
+     "file": "back.png",
+     "x": -12,
+     "y": -8,
+     "w": 1288,
+     "h": 646,
+     "rotation_deg": 0
+    }
+   ],
+   "layers_bottom_to_top": [
+    "img_1",
+    "CONTROLS+LABELS"
+   ]
+  },
+  {
+   "screen": 1,
+   "items": [
+    {
+     "id": "dl_l",
+     "kind": "k",
+     "knob": "e",
+     "x": 18,
+     "y": 6,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "dl_r",
+     "kind": "k",
+     "knob": "e",
+     "x": 270,
+     "y": 6,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "dl_fb",
+     "kind": "k",
+     "knob": "e",
+     "x": 514,
+     "y": 6,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "dl_fltfb",
+     "kind": "k",
+     "knob": "e",
+     "x": 774,
+     "y": 6,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "dl_tape",
+     "kind": "k",
+     "knob": "e",
+     "x": 1026,
+     "y": 6,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "dl_off",
+     "kind": "k",
+     "knob": "e",
+     "x": 110,
+     "y": 185,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "dl_mode",
+     "kind": "s",
+     "x": 354,
+     "y": 185,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "rv_amt",
+     "kind": "k",
+     "knob": "e",
+     "x": 622,
+     "y": 185,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "rv_dim",
+     "kind": "k",
+     "knob": "e",
+     "x": 866,
+     "y": 185,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "rv_damp",
+     "kind": "k",
+     "knob": "e",
+     "x": 1118,
+     "y": 182,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "rv_type",
+     "kind": "k",
+     "knob": "e",
+     "x": 220,
+     "y": 366,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "rv_pre",
+     "kind": "k",
+     "knob": "e",
+     "x": 464,
+     "y": 366,
+     "w": 141,
+     "h": 141
+    },
+    {
+     "id": "rv_shim",
+     "kind": "k",
+     "knob": "e",
+     "x": 724,
+     "y": 366,
+     "w": 141,
+     "h": 141
+    }
+   ],
+   "labels": [
+    {
+     "id": "dl_l",
+     "text": "LEFT",
+     "text_px": 36,
+     "x": -28,
+     "y": 137,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "dl_r",
+     "text": "RIGHT",
+     "text_px": 36,
+     "x": 224,
+     "y": 137,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "dl_fb",
+     "text": "AMNESIA",
+     "text_px": 36,
+     "x": 476,
+     "y": 137,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "dl_fltfb",
+     "text": "FDBACK",
+     "text_px": 36,
+     "x": 728,
+     "y": 137,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "dl_tape",
+     "text": "TAPE%",
+     "text_px": 36,
+     "x": 980,
+     "y": 137,
+     "w": 248,
+     "h": 48
+    },
+    {
+     "id": "dl_off",
+     "text": "OFFSET",
+     "text_px": 36,
+     "x": 70,
+     "y": 314,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "dl_mode",
+     "text": "MODE",
+     "text_px": 36,
+     "x": 314,
+     "y": 320,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "rv_amt",
+     "text": "REV%",
+     "text_px": 36,
+     "x": 582,
+     "y": 314,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "rv_dim",
+     "text": "REV_DIM",
+     "text_px": 36,
+     "x": 826,
+     "y": 316,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "rv_damp",
+     "text": "DAMP",
+     "text_px": 36,
+     "x": 1078,
+     "y": 312,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "rv_type",
+     "text": "TYPE",
+     "text_px": 36,
+     "x": 180,
+     "y": 497,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "rv_pre",
+     "text": "PRE_FLT",
+     "text_px": 36,
+     "x": 424,
+     "y": 497,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "rv_shim",
+     "text": "SHIM%",
+     "text_px": 36,
+     "x": 684,
+     "y": 497,
+     "w": 221,
+     "h": 48
+    }
+   ],
+   "groups": [],
+   "images": [
+    {
+     "id": "img_2",
+     "file": "back.png",
+     "x": 4,
+     "y": 0,
+     "w": 1272,
+     "h": 638,
+     "rotation_deg": 0
+    },
+    {
+     "id": "img_6",
+     "file": "cat.png",
+     "x": 909,
+     "y": 307,
+     "w": 366,
+     "h": 250,
+     "rotation_deg": 0
+    }
+   ],
+   "layers_bottom_to_top": [
+    "img_2",
+    "img_6",
+    "CONTROLS+LABELS"
+   ]
+  },
+  {
+   "screen": 2,
+   "items": [
+    {
+     "id": "tx_eng",
+     "kind": "k",
+     "knob": "e",
+     "x": 58,
+     "y": 70,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "tx_heads",
+     "kind": "k",
+     "knob": "e",
+     "x": 310,
+     "y": 70,
+     "w": 141,
+     "h": 128
+    },
+    {
+     "id": "tx_mode",
+     "kind": "k",
+     "knob": "e",
+     "x": 562,
+     "y": 70,
+     "w": 141,
+     "h": 128
+    },
+    {
+     "id": "tx_size",
+     "kind": "k",
+     "knob": "e",
+     "x": 814,
+     "y": 70,
+     "w": 141,
+     "h": 128
+    },
+    {
+     "id": "tx_flt",
+     "kind": "k",
+     "knob": "e",
+     "x": 1066,
+     "y": 70,
+     "w": 141,
+     "h": 128
+    },
+    {
+     "id": "tx_fxa",
+     "kind": "k",
+     "knob": "e",
+     "x": 162,
+     "y": 334,
+     "w": 141,
+     "h": 128
+    },
+    {
+     "id": "tx_fx",
+     "kind": "k",
+     "knob": "e",
+     "x": 414,
+     "y": 334,
+     "w": 141,
+     "h": 128
+    },
+    {
+     "id": "tx_boost",
+     "kind": "k",
+     "knob": "e",
+     "x": 666,
+     "y": 334,
+     "w": 141,
+     "h": 128
+    }
+   ],
+   "labels": [
+    {
+     "id": "tx_eng",
+     "text": "ENGINE",
+     "text_px": 36,
+     "x": 12,
+     "y": 190,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "tx_heads",
+     "text": "HEADS",
+     "text_px": 36,
+     "x": 264,
+     "y": 190,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "tx_mode",
+     "text": "MODE",
+     "text_px": 36,
+     "x": 516,
+     "y": 190,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "tx_size",
+     "text": "SIZE",
+     "text_px": 36,
+     "x": 768,
+     "y": 190,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "tx_flt",
+     "text": "TXT_FLT",
+     "text_px": 36,
+     "x": 1020,
+     "y": 190,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "tx_fxa",
+     "text": "TXT_FX",
+     "text_px": 36,
+     "x": 116,
+     "y": 453,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "tx_fx",
+     "text": "EFFECT",
+     "text_px": 36,
+     "x": 368,
+     "y": 453,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "tx_boost",
+     "text": "BOOST",
+     "text_px": 36,
+     "x": 620,
+     "y": 453,
+     "w": 221,
+     "h": 48
+    }
+   ],
+   "groups": [],
+   "images": [
+    {
+     "id": "img_3",
+     "file": "back.png",
+     "x": 4,
+     "y": 0,
+     "w": 1272,
+     "h": 638,
+     "rotation_deg": 0
+    },
+    {
+     "id": "img_7",
+     "file": "cat.png",
+     "x": 909,
+     "y": 307,
+     "w": 366,
+     "h": 250,
+     "rotation_deg": 0
+    }
+   ],
+   "layers_bottom_to_top": [
+    "img_3",
+    "img_7",
+    "CONTROLS+LABELS"
+   ]
+  },
+  {
+   "screen": 3,
+   "items": [
+    {
+     "id": "fr_dens",
+     "kind": "k",
+     "knob": "e",
+     "x": 66,
+     "y": 182,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "fr_pitch",
+     "kind": "k",
+     "knob": "e",
+     "x": 318,
+     "y": 182,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "fr_size",
+     "kind": "k",
+     "knob": "e",
+     "x": 554,
+     "y": 70,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "fr_spread",
+     "kind": "k",
+     "knob": "e",
+     "x": 806,
+     "y": 70,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "fr_prand",
+     "kind": "k",
+     "knob": "e",
+     "x": 1058,
+     "y": 70,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "fr_rev",
+     "kind": "k",
+     "knob": "e",
+     "x": 410,
+     "y": 358,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "fr_fb",
+     "kind": "k",
+     "knob": "e",
+     "x": 662,
+     "y": 358,
+     "w": 128,
+     "h": 128
+    }
+   ],
+   "labels": [
+    {
+     "id": "fr_dens",
+     "text": "DENSITY",
+     "text_px": 36,
+     "x": 20,
+     "y": 301,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "fr_pitch",
+     "text": "PITCH",
+     "text_px": 36,
+     "x": 272,
+     "y": 301,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "fr_size",
+     "text": "GR_SIZE",
+     "text_px": 36,
+     "x": 508,
+     "y": 189,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "fr_spread",
+     "text": "SPREAD",
+     "text_px": 36,
+     "x": 760,
+     "y": 189,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "fr_prand",
+     "text": "PITCH_RAND",
+     "text_px": 36,
+     "x": 1020,
+     "y": 193,
+     "w": 208,
+     "h": 40
+    },
+    {
+     "id": "fr_rev",
+     "text": "REVERSE",
+     "text_px": 36,
+     "x": 364,
+     "y": 477,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "fr_fb",
+     "text": "FDBACK",
+     "text_px": 36,
+     "x": 616,
+     "y": 477,
+     "w": 221,
+     "h": 48
+    }
+   ],
+   "groups": [],
+   "images": [
+    {
+     "id": "img_4",
+     "file": "back.png",
+     "x": 4,
+     "y": 0,
+     "w": 1272,
+     "h": 638,
+     "rotation_deg": 0
+    },
+    {
+     "id": "img_8",
+     "file": "cat.png",
+     "x": 909,
+     "y": 307,
+     "w": 366,
+     "h": 250,
+     "rotation_deg": 0
+    }
+   ],
+   "layers_bottom_to_top": [
+    "img_4",
+    "img_8",
+    "CONTROLS+LABELS"
+   ]
+  },
+  {
+   "screen": 4,
+   "items": [
+    {
+     "id": "r_do",
+     "kind": "s",
+     "x": 58,
+     "y": 6,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "r_dd",
+     "kind": "s",
+     "x": 310,
+     "y": 6,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "r_dt",
+     "kind": "s",
+     "x": 562,
+     "y": 6,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "r_dr",
+     "kind": "s",
+     "x": 814,
+     "y": 6,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "r_oo",
+     "kind": "s",
+     "x": 1066,
+     "y": 6,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "r_od",
+     "kind": "s",
+     "x": 58,
+     "y": 192,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "r_ot",
+     "kind": "s",
+     "x": 310,
+     "y": 192,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "r_or",
+     "kind": "s",
+     "x": 562,
+     "y": 192,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "r_ldo",
+     "kind": "s",
+     "x": 814,
+     "y": 192,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "r_ldt",
+     "kind": "s",
+     "x": 1066,
+     "y": 192,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "r_ldr",
+     "kind": "s",
+     "x": 58,
+     "y": 378,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "r_to",
+     "kind": "s",
+     "x": 310,
+     "y": 378,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "r_tr",
+     "kind": "s",
+     "x": 562,
+     "y": 378,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "r_td",
+     "kind": "s",
+     "x": 814,
+     "y": 378,
+     "w": 128,
+     "h": 128
+    },
+    {
+     "id": "order",
+     "kind": "s",
+     "x": 1066,
+     "y": 378,
+     "w": 128,
+     "h": 128
+    }
+   ],
+   "labels": [
+    {
+     "id": "r_do",
+     "text": "DRY>OUT",
+     "text_px": 36,
+     "x": 12,
+     "y": 136,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "r_dd",
+     "text": "DRY>DLY",
+     "text_px": 36,
+     "x": 264,
+     "y": 136,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "r_dt",
+     "text": "DRY>TEX",
+     "text_px": 36,
+     "x": 516,
+     "y": 136,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "r_dr",
+     "text": "DRY>REV",
+     "text_px": 36,
+     "x": 768,
+     "y": 136,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "r_oo",
+     "text": "DUB>OUT",
+     "text_px": 36,
+     "x": 1020,
+     "y": 136,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "r_od",
+     "text": "DUB>DLY",
+     "text_px": 36,
+     "x": 12,
+     "y": 322,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "r_ot",
+     "text": "DUB>TEX",
+     "text_px": 36,
+     "x": 264,
+     "y": 322,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "r_or",
+     "text": "DUB>REV",
+     "text_px": 36,
+     "x": 516,
+     "y": 322,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "r_ldo",
+     "text": "DLY>OUT",
+     "text_px": 36,
+     "x": 768,
+     "y": 322,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "r_ldt",
+     "text": "DLY>TEX",
+     "text_px": 36,
+     "x": 1020,
+     "y": 322,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "r_ldr",
+     "text": "DLY>REV",
+     "text_px": 36,
+     "x": 12,
+     "y": 508,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "r_to",
+     "text": "TXT>OUT",
+     "text_px": 36,
+     "x": 264,
+     "y": 508,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "r_tr",
+     "text": "TXT>REV",
+     "text_px": 36,
+     "x": 516,
+     "y": 508,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "r_td",
+     "text": "TXT>DLY",
+     "text_px": 36,
+     "x": 768,
+     "y": 508,
+     "w": 221,
+     "h": 48
+    },
+    {
+     "id": "order",
+     "text": "ORDER",
+     "text_px": 36,
+     "x": 1028,
+     "y": 508,
+     "w": 221,
+     "h": 48
+    }
+   ],
+   "groups": [],
+   "images": [
+    {
+     "id": "img_5",
+     "file": "back.png",
+     "x": 4,
+     "y": 0,
+     "w": 1272,
+     "h": 638,
+     "rotation_deg": 0
+    }
+   ],
+   "layers_bottom_to_top": [
+    "img_5",
+    "CONTROLS+LABELS"
+   ]
+  }
+ ]
+}

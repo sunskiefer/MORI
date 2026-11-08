@@ -1,0 +1,26 @@
+{
+  "name": "MORI",
+  "vendor": "L'Cronx",
+  "uid": "MoRi",
+  "version": 1000,
+  "so": "mori.so",
+  "params": "params.json",
+  "effect": true,
+  "defines": {
+    "HAS_LFO_BPM": 1
+  },
+  "build": {
+    "root": "../mvp",
+    "sources": [
+      "../mori/src/mori.c"
+    ],
+    "cflags": [
+      "-I../mori/src"
+    ],
+    "libs": [
+      "-lm"
+    ]
+  },
+  "layout": "layout.conf",
+  "art": "html"
+}

@@ -15,7 +15,7 @@ def bar_img(w, h):
     for z in range(3):
         x0 = z * w * S // 3
         d.rounded_rectangle([x0 + 6 * S, 6 * S, x0 + w * S // 3 - 6 * S, h * S - 6 * S], 14 * S, fill=(16, 16, 15, 255), outline=GOLD, width=3 * S)
-        d.text((x0 + w * S // 6, h * S // 2), 'ZONE %d' % (z + 1), font=ff, fill=(138, 122, 90, 255), anchor='mm')
+        d.text((x0 + w * S // 6, h * S // 2), ('FILTER', 'DELAY', 'SPACE')[z], font=ff, fill=(138, 122, 90, 255), anchor='mm')
     return im.resize((w, h), Image.LANCZOS)
 def page(name, labels, bar=False):
     bg = Image.new('RGBA', (1280, 628), (0, 0, 0, 255)); c = Image.new('RGBA', bg.size, (0, 0, 0, 0)); c.paste(back, (-12, 62)); bg.alpha_composite(c)
@@ -67,16 +67,15 @@ o.append('toggle cx=93 cy=597 label="EDITOR" key=ed_show img=skinart/bt_off.png 
 o.append('readout cx=720 cy=597 w=1000 h=80 label="" key=ed_addr box=0 tsize=40 tcolor=dcbd85 tweight=semibold talign=left when=ed_show:ON')
 o.append('qlinks "SOUND" = in_gain,gt_hold,tx_width,dl_range,dl_ms,rv_shp,rv_tfb,rv_noise,mf_freq,ed_show')
 # TOUCH: the bar's rectangle stays empty of controls (the plugin draws and reads it itself)
-T2 = ['ZONE', 'DEST A', 'RANGE A', 'DEST B', 'RANGE B']; T3 = ['DEST C', 'RANGE C', 'DRIVER', 'RELEASE', 'TOUCH X']
-page('page11', [(x, 414, t) for x, t in zip(R2, T2)] + [(x, 597, t) for x, t in zip(R3, T3)], bar=True)
+# three zones along the bar, each moves three things at once: nine RANGE knobs, no panels, no zone switch
+SL = [(R2[i], 414) for i in range(5)] + [(R3[i], 597) for i in range(4)]
+TL = ['Z%d %s' % (z, c) for z in (1, 2, 3) for c in 'ABC']; TK = ['tz%d_r%s' % (z, c) for z in (1, 2, 3) for c in 'abc']
+page('page11', [(x, y, t) for (x, y), t in zip(SL, TL)], bar=True)
 tab('TOUCH', 'page11')
-knob(R2[0], 414, 'ZONE', 'tz_sel'); knob(R3[4], 597, 'TOUCH X', 'tch_x')
-for z in (1, 2, 3):
-    w = ' when=tz_sel:Z%d' % z; p = 'tz%d_' % z
-    knob(R2[1], 414, 'DEST A', p + 'da', w); knob(R2[2], 414, 'RANGE A', p + 'ra', w); knob(R2[3], 414, 'DEST B', p + 'db', w); knob(R2[4], 414, 'RANGE B', p + 'rb', w)
-    knob(R3[0], 597, 'DEST C', p + 'dc', w); knob(R3[1], 597, 'RANGE C', p + 'rc', w); tog(R3[2], 597, 'DRIVER', p + 'drv', w); tog(R3[3], 597, 'RELEASE', p + 'rel', w)
-o.append('qlinks "TOUCH" = tz_sel,tch_x,' + ','.join('tz1_' + k for k in ['da', 'ra', 'db', 'rb', 'dc', 'rc', 'drv', 'rel']))
-for z in (2, 3): o.append('qlinks "ZONE %d" = %s' % (z, ','.join('tz%d_' % z + k for k in ['da', 'ra', 'db', 'rb', 'dc', 'rc', 'drv', 'rel'])))
+for (x, y), l, k in zip(SL, TL, TK): knob(x, y, l, k)
+o.append('qlinks "ZONE 1" = tz1_ra,tz1_rb,tz1_rc')
+o.append('qlinks "ZONE 2" = tz2_ra,tz2_rb,tz2_rc')
+o.append('qlinks "ZONE 3" = tz3_ra,tz3_rb,tz3_rc')
 open('layout_extra.conf', 'w').write('\n'.join(o) + '\n')
 # fader art, touch bar picture and its place
 S = 4

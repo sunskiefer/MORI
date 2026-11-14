@@ -59,8 +59,9 @@ sec("SOUND",[dict(key="in_gain",name="IN GAIN",min=-24,max=24,default=0,display=
              opt("rv_shp","SHIM PIT",["+12","+7","+5","-12"],0),pct("rv_tfb","TAPE FB",0),pct("rv_noise","REV NOISE",0),pct("mf_freq","EXC FREQ",50)])
 T=[dict(key="tch_x",name="TOUCH X",min=-5,max=5,default=0),dict(key="tch_y",name="TOUCH Y",min=-5,max=5,default=0),opt("tz_sel","ZONE",["Z1","Z2","Z3"],0)]
 for z in (1,2,3):
-    for e in "abc": T+=[opt("tz%d_d%s"%(z,e),"DEST %s"%e.upper(),DEST,DEST.index({1:"CUTOFF",2:"DLY FBK",3:"REV AMT"}[z]) if e=="a" else 0),pct("tz%d_r%s"%(z,e),"RANGE %s"%e.upper(),60 if e=="a" else 50,-100,100)]
-    T+=[opt("tz%d_drv"%z,"DRIVER",["X","Y"],0),opt("tz%d_rel"%z,"RELEASE",["HOLD","RETURN"],1)]
+    ZD={1:[("CUTOFF",-70),("RES",35),("M.AMT",40)],2:[("DLY FBK",45),("DLY TONE",-50),("DLY",40)],3:[("REV AMT",60),("REV DIM",45),("SHIMMER",50)]}[z]
+    for e,(dn,rg) in zip("abc",ZD): T+=[opt("tz%d_d%s"%(z,e),"DEST %s"%e.upper(),DEST,DEST.index(dn)),pct("tz%d_r%s"%(z,e),"RANGE %s"%e.upper(),rg,-100,100)]
+    T+=[opt("tz%d_drv"%z,"DRIVER",["X","X REV","Y","Y REV"],{1:1,2:0,3:0}[z]),opt("tz%d_rel"%z,"RELEASE",["HOLD","RETURN"],1)]
 sec("TOUCH",T)
 sec("INFO",[dict(key="ed_addr",name="EDITOR",display="string",min=0,max=1,default=0),dict(key="st_info",name="STATUS",display="string",min=0,max=1,default=0),tog("ed_show","EDITOR",0)])
 P=[];secs=[]

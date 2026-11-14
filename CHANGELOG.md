@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.4 (2026-11-14)
+Not yet tested on a Force.
+
+* **Touch bar left behind**: part of the bar stayed on the screen when you left the TOUCH page and showed over other plugins. The bar's picture is now cleared before the plane is switched off, the switch-off is repeated until the display accepts it, and the bar is cleared again on exit.
+* **Filter zone direction**: the FILTER zone now opens from left to right (closed at its left edge, open at its right). New DRIVER choices X REV and Y REV make any zone run the other way.
+* **TOUCH page**: no ZONE knob, no per-zone panels and no TOUCH X knob; nine RANGE knobs (Z1 A to Z3 C) sit on one page, and every zone moves three controls at once. Documented in section 11 of the guide.
+* **Sound clean-up**: fast texture heads are low-passed so they no longer alias into harsh highs; resonance and filter level are limited; cutoff and levels are smoothed; texture and delay feedback and the master and DUB sums use a soft limiter instead of hard clipping; the join of the texture memory is faded.
+* **Presets**: the 65 presets are kept and tamed (caps on resonance, feedback, shimmer and effect amounts, and on the wet parts added together); 4 added from the MEMENTO manual's factory FLOWs (M.HEAD, DEJA-VU, FRAGMENT, VINYL): 69 in all.
+
 ## 0.6.1 (2026-11-14)
 Not yet tested on a Force.
 

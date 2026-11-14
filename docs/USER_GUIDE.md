@@ -218,18 +218,59 @@ knobs, **DEST 2** and **DEPTH 2**, give the modulator a second control to move w
 
 ## 11. TOUCH
 
-The bar at the top of the page is played with a finger. It has three zones side by side. Each zone can move up to three controls
-(**DEST A, B, C**) by the amounts **RANGE A, B, C**. **ZONE** chooses which zone's settings the knobs show.
+The bar at the top of the page is played with a finger. It is cut into **three zones side by side**: the left third is **FILTER**,
+the middle third **DELAY**, the right third **SPACE**. Every zone moves **three things at once**, so one finger gesture changes a
+whole group of settings, not a single knob. There is no zone switch and no per-zone panel: all three zones are on the page together.
 
-* **DRIVER** – X: the finger's place from left to right inside the zone. Y: its height in the bar.
-* **RELEASE** – HOLD keeps the last value when the finger lifts. RETURN lets it fall back.
-* **TOUCH X** – the finger's place as an ordinary control, so a Q-Link or automation can play the bar too.
+### The nine knobs
 
-Out of the box zone 1 sweeps the filter, zone 2 raises the delay feedback and zone 3 opens the reverb.
+The page shows nine RANGE knobs, three per zone, named after the zone and the slot: **Z1 A, Z1 B, Z1 C** (FILTER), **Z2 A, B, C** (DELAY),
+**Z3 A, B, C** (SPACE). A RANGE says how far that zone pushes its target while the finger is on it:
+
+* turn it to the right to push the target up, to the left to push it down, centre = nothing;
+* the push is **added** to wherever the target's own knob is set, so the bar never fights your settings: let go (with RELEASE on RETURN) and the sound is back to what the knobs say.
+
+### What each zone does out of the box
+
+| Zone | A | B | C |
+|---|---|---|---|
+| 1 FILTER (left) | CUTOFF, -70: closes the filter | RES, +35: more resonance as it closes | M.AMT, +40: more master FX |
+| 2 DELAY (middle) | DLY FBK, +45: more repeats | DLY TONE, -50: darker repeats | DLY, +40: more delay level |
+| 3 SPACE (right) | REV AMT, +60: more reverb | REV DIM, +45: bigger room | SHIMMER, +50: more shimmer |
+
+### The FILTER zone opens from left to right
+
+Put a finger at the **left edge** of the FILTER zone and the filter is **closed** (a dark, resonant low-pass). Slide to the **right** and it
+**opens** until it is fully open at the zone's right edge. This is because zone 1's DRIVER is **X REV** (see below) and its CUTOFF range is
+negative. Lift the finger and, with RELEASE = RETURN, the filter swings back open by itself.
+
+### Settings that are not on the Force page
+
+The DEST (what a slot moves), DRIVER and RELEASE settings of each zone are in the **browser editor** (section 13, TOUCH group) and are
+stored in presets. The Force page keeps only the nine RANGE knobs so that nothing repeats. In the editor:
+
+* **DEST A, B, C** – any of the 23 modulation destinations (the same list as the step modulators).
+* **DRIVER** – what position the zone follows:
+  * **X** – the finger's place across the zone: 0 at its left edge, 1 at its right edge.
+  * **X REV** – the same, the other way round: 1 at the left edge, 0 at the right. (FILTER uses this.)
+  * **Y** – the finger's height in the bar: 0 at the bottom, 1 at the top.
+  * **Y REV** – the other way round.
+* **RELEASE** – **HOLD** keeps the last value when the finger lifts; **RETURN** lets it fall back to nothing in about a quarter of a second.
+
+### Playing it from a Q-Link or automation
+
+The Q-Link pages **ZONE 1, ZONE 2, ZONE 3** each carry that zone's three RANGE knobs. The finger position is also available as the controls
+TOUCH X and TOUCH Y in the browser editor and to automation, so a sequence in your DAW can play the bar.
+
+### The bar only exists on the TOUCH page
+
+The bar is drawn by the plugin over MPC's screen. It is shown **only while MORI's TOUCH page is on screen**. If you go to another MORI page,
+another MPC screen, or another plugin, the bar is cleared at once, and it is switched off again every time until the display accepts it. (Before
+0.6.4 a part of the bar could stay behind on other screens and other plugins; that was a bug.)
 
 ## 12. PRESET
 
-MORI has 65 factory presets and room for 964 of your own.
+MORI has 69 factory presets (the first four, M.HEAD, DEJA-VU, FRAGMENT and VINYL, are the factory FLOWs of the MEMENTO manual: their engine and zone order, everything else neutral) and room for 964 of your own.
 
 * **The name at the top** – the current preset. The arrows beside it step to the previous and next one.
 * **PREV, NEXT, -10, +10** and the **PRESET** knob – move through the list. The data wheel works on the preset number too.

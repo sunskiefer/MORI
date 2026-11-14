@@ -49,7 +49,7 @@ function paint(){document.querySelectorAll('canvas[data-seq]').forEach(cv=>{cons
 function build(){const m=$('#main');m.innerHTML='';const nv=$('#nav');nv.innerHTML='';Object.keys(TABS).forEach(t=>nv.append(el('button',{class:t==tab?'on':'',onclick:()=>{tab=t;build()}},t)));
  if(tab=='PRESETS'){presetsCard(m);return}
  TABS[tab].forEach(sn=>{const s=META.secs.find(x=>x.label==sn);if(!s)return;const c=el('div',{class:'card'},el('h2',{},sn));
-  s.keys.forEach(k=>{const p=META.p[idx(k)];if(!p||p.str||/^s\d_\d+$/.test(k)||/^t\d_\d+$/.test(k))return;if(sn=='TOUCH'&&/^tz\d_/.test(k)){const z=k[2];if(!c.z||c.z!=z){c.z=z;c.append(el('h2',{style:'margin-top:12px'},'Zone '+z))}}c.append(ctl(p))});m.append(c)});
+  s.keys.forEach(k=>{const p=META.p[idx(k)];if(!p||p.str||/^s\d_\d+$/.test(k)||/^t\d_\d+$/.test(k)||k=='tch_x'||k=='tch_y'||k=='tz_sel')return;if(sn=='TOUCH'&&/^tz\d_/.test(k)){const z=k[2];if(!c.z||c.z!=z){c.z=z;c.append(el('h2',{style:'margin-top:12px'},'Zone '+z))}}c.append(ctl(p))});m.append(c)});
  if(tab=='SEQ 1')m.append(seqCard(1));if(tab=='SEQ 2')m.append(seqCard(2));
  if(tab=='TOUCH'){const c=el('div',{class:'card wide'},el('h2',{},'Touch bar'));const pd=el('canvas',{id:'pad'});c.append(pd);
   const mv=e=>{const r=pd.getBoundingClientRect();send(idx('tch_x'),((e.clientX-r.left)/r.width*10-5).toFixed(2));send(idx('tch_y'),(5-(e.clientY-r.top)/r.height*10).toFixed(2))};

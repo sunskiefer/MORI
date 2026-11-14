@@ -68,6 +68,7 @@ typedef struct {
     /* touch bar (the pad thread writes tx_, ty_), zones */
     volatile float tx_, ty_; volatile unsigned tch_changed; unsigned tch_rep; overlay_t pad; int pad_on;
     float tzv[3], tlx, tly;
+    float sl[5], fc_s, tx_lp2[2], hlp[8][2];   /* smoothed levels (dry, dub, dly, txt, master), smoothed cutoff, texture top-end filter */
     int g_holdc, ov_any; float mm_hp[2], mm_lp[2]; svf_t fm1[2], fm2[2], fr1[2], fr2[2];
     /* pattern slots and the editor's web server */
     float pat[8][32]; int pat_used[8]; char pat_path[512];
@@ -79,6 +80,11 @@ typedef struct {
 
 static float frand(mori_t *m) { m->rng = m->rng * 1664525u + 1013904223u; return (m->rng >> 8) * (1.0f / 16777216.0f); }
 static float clampf(float x, float a, float b) { return x < a ? a : x > b ? b : x; }
+/* clean up to 0.85 of full scale, a soft knee above it: no colour on normal levels */
+static inline float softlim(float x) { float a = fabsf(x); if (a <= .85f) return x; float y = .85f + .15f * tanhf((a - .85f) / .15f); return x < 0 ? -y : y; }
+/* a read head's gain near the place the memory is being written (the join between the newest and the oldest sound): fades to
+ * nothing there, so a head passing it does not click. d = how far behind the write place the head reads, 0 .. len */
+static inline float seam_fade(float d, int len) { float e = (float)len - d; if (e < d) d = e; return d >= 600.f ? 1.f : d <= 0 ? 0.f : d / 600.f; }
 static float lerp_buf(const float *b, int len, float pos) {
     while (pos < 0) pos += len;
     int i = (int)pos; float f = pos - i;
@@ -146,7 +152,11 @@ static void touch_tick(mori_t *m, int frames) {
     float dt = frames / SR;
     for (int i = 0; i < 3; i++) {
         int b = K_TZ1_DA + i * (K_TZ2_DA - K_TZ1_DA);
-        if (active && z == i) m->tzv[i] = ((int)m->v[b + 6] == 0) ? p : (y + 5.f) / 10.f;
+        if (active && z == i) {
+            /* DRIVER: X = the finger's place across its zone (0 at the zone's left edge, 1 at its right), X REV = the other way, Y = height, Y REV = the other way */
+            int dv = (int)m->v[b + 6]; float yy = (y + 5.f) / 10.f;
+            m->tzv[i] = dv == 0 ? p : dv == 1 ? 1.f - p : dv == 2 ? yy : 1.f - yy;
+        }
         else if ((int)m->v[b + 7] == 1 && !(m->pad_on && m->pad.touching && z == i)) { m->tzv[i] -= dt * 4.f; if (m->tzv[i] < 0) m->tzv[i] = 0; }
         for (int e = 0; e < 3; e++) mod_apply(m, (int)(m->v[b + e * 2] + .5f), m->v[b + e * 2 + 1] / 100.f, m->tzv[i], 0);
     }
@@ -550,6 +560,7 @@ static void eng_song_pos(void *p, double ppq, double bpm, int playing, int frame
     mori_t *m = p; (void)frames; m->ppq = ppq; m->playing = playing; if (bpm > 20 && bpm < 400) { m->hbpm = bpm; m->bpm = (float)bpm; }
 }
 static float do_filter(svf_t *a, svf_t *b, float t, int fbp, int f24, float fc, float fg_lp, float fg_hp, float fk) {
+    t *= powf(fk * .5f, .3f);            /* the more resonance, the less level into the filter, so the peak does not overload */
     if (fbp) { t = svf(a, t, fg_lp, fk, 2); if (f24) t = svf(b, t, fg_lp, fk, 2); }
     else if (fc < -.02f) { t = svf(a, t, fg_lp, fk, 0); if (f24) t = svf(b, t, fg_lp, fk, 0); }
     else if (fc > .02f) { t = svf(a, t, fg_hp, fk, 1); if (f24) t = svf(b, t, fg_hp, fk, 1); }
@@ -573,6 +584,7 @@ static void eng_process(void *p, const int16_t *in, int16_t *out, int frames) {
     m->was_blk = blocked0;
     float lvl_dry = v[K_DRY] / 100.f, lvl_ovl = v[K_OVL] / 100.f, lvl_dly = v[K_DLY] / 100.f, lvl_txt = v[K_TXT] / 100.f;
     float master = v[K_MASTER] / 100.f; master = master * master * 1.4f;
+    const float lvl_t[5] = { lvl_dry, lvl_ovl, lvl_dly, lvl_txt, master };
     int order = (int)v[K_ORDER];
     /* delay times in samples */
     float spb = spb0;
@@ -619,13 +631,14 @@ static void eng_process(void *p, const int16_t *in, int16_t *out, int frames) {
     int fin = fpos == 1, min_ = mpos == 1;
     float spin_hz = .05f * powf(120.f, v[K_SP_SPEED] / 100.f), spin_d = v[K_SP_DIST] / 100.f; int spin_on = (int)v[K_OUT_MODE] == 1;
     /* filter */
-    float fc = v[K_FLT_CUT] / 100.f; int fon = fabsf(fc) > .02f || (int)v[K_FLT_TYPE] == 1;
+    m->fc_s += (v[K_FLT_CUT] / 100.f - m->fc_s) * .5f;
+    float fc = m->fc_s; int fon = fabsf(fc) > .02f || (int)v[K_FLT_TYPE] == 1;
     int fbp = (int)v[K_FLT_TYPE] == 1; int f24 = (int)v[K_FLT_SLOPE] == 1;
-    float fk = 2.f - 1.9f * v[K_FLT_RES] / 100.f;
+    float fk = 2.f - 1.9f * v[K_FLT_RES] / 100.f; { float kmin = f24 ? .55f : .22f; if (fk < kmin) fk = kmin; }
     float fg_lp = svf_g(cut_to_hz(fc < 0 ? 1.f + fc : 1.f)), fg_hp = svf_g(cut_to_hz(fc > 0 ? fc : 0.f));
     if (fbp) { float t = (fc + 1.f) * .5f; fg_lp = fg_hp = svf_g(cut_to_hz(t)); }
     /* reverb */
-    float rdec, rsize, rdamp; reverb_params(m, &rdec, &rsize, &rdamp);
+    float rdec, rsize, rdamp; reverb_params(m, &rdec, &rsize, &rdamp); if (rdec > .975f) rdec = .975f;
     float ramt = v[K_RV_AMT] / 100.f, shim = v[K_RV_SHIM] / 100.f;
     float pre_g = 1.f - expf(-2 * PI * (30.f + 600.f * v[K_RV_PRE] / 100.f) / SR); int pre_on = v[K_RV_PRE] > 1;
     /* master fx */
@@ -636,6 +649,8 @@ static void eng_process(void *p, const int16_t *in, int16_t *out, int frames) {
 
     for (int n = 0; n < frames; n++) {
         float x[2] = { in[2 * n] / 32768.f, in[2 * n + 1] / 32768.f };
+        for (int i = 0; i < 5; i++) m->sl[i] += (lvl_t[i] - m->sl[i]) * .004f;       /* levels glide (about 6 ms): no clicks when a modulator gates them */
+        const float s_dry = m->sl[0], s_ovl = m->sl[1], s_dly = m->sl[2], s_txt = m->sl[3], s_mas = m->sl[4];
         x[0] *= ing; x[1] *= ing;
         if (gate_on) {
             float lvl = fmaxf(fabsf(x[0]), fabsf(x[1]));
@@ -655,7 +670,7 @@ static void eng_process(void *p, const int16_t *in, int16_t *out, int frames) {
         for (int c = 0; c < 2; c++) {
             float o = m->ov[c][m->ow];
             ovo[c] = o;
-            if (ovmode == 1) { m->ov[c][m->ow] = o * .995f + x[c] * .7f; if (fabsf(x[c]) > .001f) m->ov_any = 1; }
+            if (ovmode == 1) { m->ov[c][m->ow] = softlim(o * .85f + x[c] * .6f); if (fabsf(x[c]) > .001f) m->ov_any = 1; }
             else if (ovmode == 2) { m->ov[c][m->ow] = x[c]; if (fabsf(x[c]) > .001f) m->ov_any = 1; }
             else if (ovmode == 3) m->ov[c][m->ow] = 0;
         }
@@ -682,7 +697,7 @@ static void eng_process(void *p, const int16_t *in, int16_t *out, int frames) {
                 for (int c = 0; c < 2; c++)
                     tex_in[c] = x[c] * (v[K_R_DT] > .5f) + ovo[c] * (v[K_R_OT] > .5f) + (order == 0 ? dlo[c] * (v[K_R_LDT] > .5f) : 0);
                 /* write */
-                if (!blocked) for (int c = 0; c < 2; c++) m->tx[c][m->tw] = tex_in[c] + m->txfb[c] * v[K_FR_FB] / 100.f * .8f;
+                if (!blocked) for (int c = 0; c < 2; c++) m->tx[c][m->tw] = softlim(tex_in[c] + m->txfb[c] * v[K_FR_FB] / 100.f * .6f);
                 int wpos = m->tw;
                 if ((int)v[K_TX_ENG] == 0) {
                     float g = 1.f / sqrtf((float)heads) * 1.6f;
@@ -702,7 +717,10 @@ static void eng_process(void *p, const int16_t *in, int16_t *out, int frames) {
                         float rp = (float)wpos - m->head_pos[h]; while (rp < 0) rp += txlen;
                         for (int c = 0; c < 2; c++) {
                             float pan = ((h + c) & 1) ? 1.f : .45f;
-                            txo[c] += lerp_buf(m->tx[c], txlen, rp) * g * pan * (blocked ? frz_fade(m, rp, txlen) : 1.f);
+                            float hv = lerp_buf(m->tx[c], txlen, rp);
+                            if (fabsf(sp) > 1.f) { float hc = 1.4f / fabsf(sp);   /* a head that plays faster than it was written loses the highs it would fold back */
+                              m->hlp[h][c] += (hv - m->hlp[h][c]) * hc; hv = m->hlp[h][c]; }
+                            txo[c] += hv * g * pan * (blocked ? frz_fade(m, rp, txlen) : seam_fade(m->head_pos[h], txlen));
                         }
                     }
                 } else if ((int)v[K_TX_ENG] == 1) {
@@ -725,7 +743,8 @@ static void eng_process(void *p, const int16_t *in, int16_t *out, int frames) {
                         float ph = m->gr[g].age / m->gr[g].len;
                         float w = .5f - .5f * cosf(2 * PI * ph);
                         float rp = m->gr[g].pos; while (rp < 0) rp += txlen; while (rp >= txlen) rp -= txlen;
-                        float ff = blocked ? frz_fade(m, rp, txlen) : 1.f;
+                        float gd = (float)wpos - rp; while (gd < 0) gd += txlen;
+                        float ff = blocked ? frz_fade(m, rp, txlen) : seam_fade(gd, txlen);
                         txo[0] += lerp_buf(m->tx[0], txlen, rp) * w * ff * (1.f - m->gr[g].pan * .6f) * .5f;
                         txo[1] += lerp_buf(m->tx[1], txlen, rp) * w * ff * (.4f + m->gr[g].pan * .6f) * .5f;
                         m->gr[g].pos += m->gr[g].inc; m->gr[g].age += 1;
@@ -738,7 +757,8 @@ static void eng_process(void *p, const int16_t *in, int16_t *out, int frames) {
                     m->vspd += (v[K_TX_SPEED] / 100.f - m->vspd) * .002f;
                     m->vpos += m->vspd;
                     while (m->vpos < 0) m->vpos += txlen; while (m->vpos >= txlen) m->vpos -= txlen;
-                    float ff = blocked ? frz_fade(m, m->vpos, txlen) : 1.f;
+                    float vd = (float)wpos - m->vpos; while (vd < 0) vd += txlen;
+                    float ff = blocked ? frz_fade(m, m->vpos, txlen) : seam_fade(vd, txlen);
                     for (int c = 0; c < 2; c++) txo[c] += lerp_buf(m->tx[c], txlen, m->vpos) * ff;
                 }
                 if (++m->tw >= txlen) m->tw = 0;
@@ -759,8 +779,8 @@ static void eng_process(void *p, const int16_t *in, int16_t *out, int frames) {
         /* mix and reverb send */
         float mix[2], rsend[2];
         for (int c = 0; c < 2; c++) {
-            mix[c] = x[c] * lvl_dry * (v[K_R_DO] > .5f) + ovo[c] * lvl_ovl * (v[K_R_OO] > .5f) + dlo[c] * lvl_dly * (v[K_R_LDO] > .5f) + txo[c] * lvl_txt * (v[K_R_TO] > .5f);
-            rsend[c] = x[c] * lvl_dry * (v[K_R_DR] > .5f) + ovo[c] * lvl_ovl * (v[K_R_OR] > .5f) + dlo[c] * lvl_dly * (v[K_R_LDR] > .5f) + txo[c] * lvl_txt * (v[K_R_TR] > .5f);
+            mix[c] = x[c] * s_dry * (v[K_R_DO] > .5f) + ovo[c] * s_ovl * (v[K_R_OO] > .5f) + dlo[c] * s_dly * (v[K_R_LDO] > .5f) + txo[c] * s_txt * (v[K_R_TO] > .5f);
+            rsend[c] = x[c] * s_dry * (v[K_R_DR] > .5f) + ovo[c] * s_ovl * (v[K_R_OR] > .5f) + dlo[c] * s_dly * (v[K_R_LDR] > .5f) + txo[c] * s_txt * (v[K_R_TR] > .5f);
             if (fpos == 2 && fon) {
                 mix[c] = do_filter(&m->fm1[c], &m->fm2[c], mix[c], fbp, f24, fc, fg_lp, fg_hp, fk);
                 rsend[c] = do_filter(&m->fr1[c], &m->fr2[c], rsend[c], fbp, f24, fc, fg_lp, fg_hp, fk);
@@ -809,7 +829,7 @@ static void eng_process(void *p, const int16_t *in, int16_t *out, int frames) {
             if (mpos == 0) s = do_mfx(s, mft, mfa, mf_g, &m->mf_hp[c], &m->mf_lp[c]);
             /* DC block + master + soft limit */
             float y = s - m->dcx[c] + .995f * m->dcy[c]; m->dcx[c] = s; m->dcy[c] = y;
-            o[c] = tanhf(y * master);
+            o[c] = softlim(y * s_mas);
         }
         if (spin_on) {
             m->sp_ph += 2 * PI * spin_hz / SR; if (m->sp_ph > 2 * PI) m->sp_ph -= 2 * PI;

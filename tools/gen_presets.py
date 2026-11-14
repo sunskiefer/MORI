@@ -10,10 +10,20 @@ for p in params:
     d = p["default"]
     base[p["key"]] = p["options"][d] if p.get("options") else d
 # a quiet, playable starting point
-INIT = dict(dry=100, ovl=0, dly=0, txt=0, master=80, rv_amt=0)
+INIT = dict(dry=100, ovl=0, dly=0, txt=0, master=80, rv_amt=0)   # what a preset leaves out is off, so each one is its named sound
 presets = []
 def P(name, **kw):
     v = dict(base); v.update(INIT); v.update(kw)
+    # house limits: wet parts sit under the dry sound, resonance and drive stay musical, feedback cannot run away
+    v["dly"] = min(v["dly"], 62); v["txt"] = min(v["txt"], 72); v["rv_amt"] = min(v["rv_amt"], 42)      # near the default balance (60 / 70 / 30)
+    s = v["dly"] + v["txt"] + v["rv_amt"]                  # all the wet parts together stay under the dry sound's headroom
+    if s > 130:
+        for k in ("dly", "txt", "rv_amt"): v[k] = round(v[k] * 130 / s)
+    if v["rv_type"] in ("CATHEDRAL", "HALL"): v["rv_dim"] = min(v["rv_dim"], 70)
+    v["flt_res"] = min(v["flt_res"], 38); v["mf_amt"] = min(v["mf_amt"], 40); v["tx_fxa"] = min(v["tx_fxa"], 40)
+    v["dl_fb"] = min(v["dl_fb"], 58); v["fr_fb"] = min(v["fr_fb"], 30); v["tx_boost"] = min(v["tx_boost"], 20); v["rv_shim"] = min(v["rv_shim"], 45)
+    for n in (1, 2):
+        if v["sq%d_dest" % n] in ("TXT FX", "M.AMT", "RES"): v["sq%d_amt" % n] = max(-45, min(45, v["sq%d_amt" % n]))
     for k in kw:
         assert k in base, k
     presets.append({"name": name[:24], "values": {k: v[k] for k in base}})
@@ -42,6 +52,11 @@ MELO = [0, 0, 29, 0, 50, 50, 29, 0, 79, 0, 50, 29, 100, 0, 79, 50]      # semito
 SYNC = [100, 0, 0, 100, 0, 100, 0, 0, 100, 0, 100, 0, 0, 100, 100, 0]
 
 # ---- starting points
+# the factory FLOWs from the MEMENTO manual (chapter 7): engine and zone order as listed there, everything else neutral
+P("M.HEAD", tx_eng="M.HEAD", order="DLY>TEX", tx_heads=4, tx_mode="MIXED", dly=40, txt=55, rv_amt=22)
+P("DEJA-VU", tx_eng="M.HEAD", order="TEX>DLY", tx_heads=4, tx_mode="MIXED", dly=40, txt=55, rv_amt=22)
+P("FRAGMENT", tx_eng="FRAGMENT", order="DLY>TEX", dly=40, txt=55, rv_amt=22)
+P("VINYL", tx_eng="VINYL", order="TEX>DLY", dly=30, txt=60, rv_amt=18)
 P("MORI Init", dly=60, txt=70, ovl=100, rv_amt=30)
 P("Clean Send", dry=0, dly=70, rv_amt=30)
 

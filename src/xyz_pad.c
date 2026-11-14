@@ -820,7 +820,7 @@ static void *pad_thread(void *p) {
     touch_open(o, &t);
     __atomic_store_n(&o->live, 1, __ATOMIC_RELEASE);
     logf_(o, "live");
-    int shown = 0, first = 1, fails = 0, drawn_touch = -1, looks = 0;
+    int shown = 0, first = 1, fails = 0, drawn_touch = -1, looks = 0, hide_pending = 0;
     unsigned geom_seen = ~0u;
     float dx = 1e9f, dy = 1e9f;
     double last_look = 0, last_draw = 0, last_stat = now_ms();
@@ -875,10 +875,15 @@ static void *pad_thread(void *p) {
                     }
                 }
             }
-        } else if (shown) {
-            set_plane(o, 0, 0, 0);
-            shown = 0; first = 1;
-            logf_(o, "hidden (%s)", o->fmt_unknown ? "the display's picture can't be read" : "XYZ's page is not on the display");
+        } else if (shown || hide_pending) {
+            /* nothing of the pad may stay on a screen that is not MORI's TOUCH page, or on another plugin's: first the picture goes
+             * transparent (so even a plane the display keeps for a moment shows nothing), then the plane is switched off, and if
+             * that is refused it is tried again on every pass until it works */
+            for (int i = 0; i < 2; i++) if (o->buf[i].map) memset(o->buf[i].map, 0, (size_t)o->buf[i].pitch * o->ph);
+            if (prev) memset(prev, 0, (size_t)o->bufd * o->bufd * 4);
+            int rc = set_plane(o, 0, 0, 0);
+            if (shown) logf_(o, "hidden (%s)%s", o->fmt_unknown ? "the display's picture can't be read" : "XYZ's page is not on the display", rc ? ": the plane switch-off was refused, trying again" : "");
+            shown = 0; first = 1; hide_pending = rc != 0;
         }
         if (now - last_stat >= 30000) {
             logf_(o, "%ld touch events, %ld fingers on the pad, %ld frames, %s", t.nevents, t.nclaims, frames, shown ? "shown" : "hidden");
@@ -886,7 +891,8 @@ static void *pad_thread(void *p) {
             last_stat = now;
         }
     }
-    set_plane(o, 0, 0, 0);
+    for (int i = 0; i < 2; i++) if (o->buf[i].map) memset(o->buf[i].map, 0, (size_t)o->buf[i].pitch * o->ph);
+    set_plane(o, 0, 0, 0); set_plane(o, 0, 0, 0);
     for (int i = 0; i < 2; i++) destroy_buffer(o, &o->buf[i]);
     __atomic_store_n(&o->live, 0, __ATOMIC_RELEASE);
     logf_(o, "stopped");

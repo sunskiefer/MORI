@@ -1,6 +1,6 @@
 # MORI
 
-**A love letter to [MEMENTO | Enjoy-Lab](https://www.enjoy-lab.com/memento).** MORI is my own circuitry, programmed by logic: not their code, not a clone, not a port. For the Akai Force and MPC OS (VST2, ARMv7). Vendor: L'Cronx. Current version: 0.6.4 (0.3.1 was tested on Akai Force; 0.6.4 is not yet, see Status).
+**A love letter to [MEMENTO | Enjoy-Lab](https://www.enjoy-lab.com/memento).** MORI is my own circuitry, programmed by logic: not their code, not a clone, not a port. For the Akai Force and MPC OS (VST2, ARMv7). Vendor: L'Cronx. Current version: 0.6.4 (tested on Akai Force, see Status).
 
 MORI is an effect for making sound drift, repeat and dissolve. Play anything through it, then record a loop of what you hear into the DUB layer,
 send the result around a delay, a memory of moving heads or a cloud of grains, and let it all fall into a reverb. Two step modulators and a touch bar keep it moving. Thirteen pages, big
@@ -54,7 +54,7 @@ The editor has no password: anyone on the same network can open it while MORI is
 
 ## Status
 
-0.6.4 is built, packaged, and passes the installer and catalog checks, but has not run on a Force yet. See [docs/UNVERIFIED.md](docs/UNVERIFIED.md) for what still needs confirming on the Force.
+0.6.4 was tested on an Akai Force on 2026-11-14: the FILTER zone opens from left to right and the touch bar no longer stays on other screens or other plugins. The browser editor was confirmed working on the Force with 0.6.1. See [docs/UNVERIFIED.md](docs/UNVERIFIED.md) for the points not individually confirmed yet.
 
 ## License
 

@@ -1,7 +1,7 @@
 # Changelog
 
 ## 0.6.4 (2026-11-14)
-Not yet tested on a Force.
+Tested on an Akai Force (2026-11-14): filter zone direction and the touch bar fix confirmed.
 
 * **Touch bar left behind**: part of the bar stayed on the screen when you left the TOUCH page and showed over other plugins. The bar's picture is now cleared before the plane is switched off, the switch-off is repeated until the display accepts it, and the bar is cleared again on exit.
 * **Filter zone direction**: the FILTER zone now opens from left to right (closed at its left edge, open at its right). New DRIVER choices X REV and Y REV make any zone run the other way.

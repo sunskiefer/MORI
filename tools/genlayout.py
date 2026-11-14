@@ -19,4 +19,12 @@ for p in L['pages']:
             o.append('button cx=%d cy=%d label="" key=%s img=skinart/bt_off.png img_on=skinart/bt_on.png w=%d h=%d'%(cx,cy,k,it['w'],it['h']))
     o.append('qlinks "%s" = %s'%(T[p['screen']],','.join(keys[:16])))
     o.append("")
-open('layout.conf','w').write("\n".join(o))
+o.insert(1,"theme_accent=dcbd85\ntheme_accent_hi=f0d9a8")
+import re, subprocess, sys
+subprocess.run([sys.executable,'tools/gen_extra_layout.py'],check=True)
+# HDR_READOUTS: the empty band at the top of every page shows the preset name and the loop state / tempo
+HDR=('readout cx=330 cy=117 w=620 h=56 label="" key=preset_name box=0 tsize=32 tcolor=dcbd85 tweight=semibold talign=left\n'
+     'readout cx=950 cy=117 w=620 h=56 label="" key=st_info box=0 tsize=32 tcolor=dcbd85 tweight=semibold talign=right')
+txt="\n".join(o)+open('layout_extra.conf').read()+open('layout_preset.conf').read()
+txt=re.sub(r'(?m)^(art file=skinart/page\d+\.png .*)$', lambda m: m.group(1)+"\n"+HDR, txt)
+open('layout.conf','w').write(txt)

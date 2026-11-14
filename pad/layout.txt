@@ -1,0 +1,3 @@
+# MORI touch bar: its place on the TOUCH page, in page pixels (the page is 1280 x 628; 0,0 is its top-left).
+# id  x   y   w    h
+pad   40 72 1200 180

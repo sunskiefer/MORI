@@ -7,20 +7,27 @@
   "params": "params.json",
   "effect": true,
   "defines": {
-    "HAS_LFO_BPM": 1
+    "HAS_LFO_BPM": 1,
+    "PARAM_TEXT_MAX": 32,
+    "HAS_SONG_POS": 1,
+    "MODULE_SUBDIR": "\"pad\""
   },
   "build": {
     "root": "../mvp",
     "sources": [
-      "../mori/src/mori.c"
+      "../mori/src/mori.c",
+      "../mori/src/xyz_pad.c"
     ],
     "cflags": [
       "-I../mori/src"
     ],
     "libs": [
-      "-lm"
+      "-lm",
+      "-ldl"
     ]
   },
   "layout": "layout.conf",
-  "art": "html"
+  "art": "html",
+  "presets": "presets.json",
+  "skin_post": "tools/skin_post.py"
 }

@@ -23,7 +23,7 @@ master effect and the master level.
 The **ROUTING** page decides which part feeds which. It is a patch bay with switches: for example DRY>DLY says whether the
 dry input is sent into the delay, and DUB>REV says whether the DUB loop is sent into the reverb.
 
-## 2. The five pages
+## 2. The pages
 
 | Page | What is on it |
 |---|---|
@@ -32,6 +32,17 @@ dry input is sent into the delay, and DUB>REV says whether the DUB loop is sent 
 | TEXTURE | the multi-head memory and its tone |
 | FRAGMENT | the grain engine |
 | ROUTING | the routing switches and the DELAY / TEXTURE order |
+| SEQ 1, SEQ 2 | the two step modulators: 16 faders and their settings |
+| GATES 1, GATES 2 | a gate type for every step, and each modulator's second destination |
+| FLOW | the input gate, VINYL SPD, where the filter and master effect sit, SPIN output, reverb limiter |
+| SOUND | input gain, texture width, delay range, shimmer pitch, tape feedback, reverb noise, exciter frequency, the EDITOR button |
+| TOUCH | the touch bar and its three zones |
+| PRESET | pick, save and delete presets |
+
+The band at the top of every page shows the current preset on the left (a star after the name means the sound has been changed since it
+was loaded) and, on the right, the state of the DUB loop and the tempo MORI is getting from the project, for example
+`DUB PLAY  120.0 BPM SYNC`. SYNC means MORI is following the song position, FREE means the transport is stopped, NO TEMPO means the
+project is not sending a tempo and MORI is using 120 BPM.
 
 The Q-Links 1 to 8 follow the first row of controls on the page and 9 to 16 the second, in the order shown on screen.
 
@@ -55,7 +66,9 @@ DUB is a loop that follows your project tempo. It records what comes in, and pla
   * **FORGET** – erases the loop as it plays, so it fades out in one pass.
 * **CLEAR** – a tap that wipes the whole loop at once.
 
-The loop is always the same length as your beats, so it stays in time with the project. If the host reports no tempo, MORI assumes 120 BPM.
+The loop is always the same length as your beats and, while the project plays, it follows the song position: whatever you record
+lands on the bar it was played on and comes back on that bar. With the transport stopped the loop runs free. If the project
+reports no tempo, MORI assumes 120 BPM (the band at the top of the page then says NO TEMPO).
 
 ### BLOCK
 
@@ -103,8 +116,9 @@ An eight-line reverb. Each source can be switched on or off for the reverb in RO
 
 ## 5. TEXTURE
 
-TEXTURE keeps a short memory of what it hears and plays it back in new ways. There are two engines, chosen with **ENGINE**:
-M.HEAD (this page) and FRAGMENT (next page).
+TEXTURE keeps a short memory of what it hears and plays it back in new ways. There are three engines, chosen with **ENGINE**:
+M.HEAD (this page), FRAGMENT (next page) and VINYL (one playback head whose speed is the VINYL SPD knob on the FLOW page: 100 is
+normal speed, 0 stops it, negative values play backwards, like a hand on a record).
 
 ### M.HEAD: the multi-head memory
 
@@ -153,7 +167,122 @@ Fourteen switches, plus ORDER. Every switch is on by default, so out of the box 
 
 Only one of DLY>TEX and TXT>DLY has an effect at a time, depending on ORDER: in DLY>TEX the delay feeds the texture, and in TEX>DLY the texture feeds the delay.
 
-## 8. Using it musically
+## 8. SEQ 1 and SEQ 2: the step modulators
+
+A step modulator moves a control for you, in time with the project. Each one has 16 steps; the height of a step's fader is how far
+that step pushes the control. This is what turns MORI from a delay and a reverb into something that makes patterns.
+
+* **The 16 faders** – draw the pattern. A fader at the bottom is a silent step.
+* **DEST** – which control the modulator moves: the four levels and MASTER, delay feedback and tone, texture filter, effect and boost,
+  VINYL SPD, grain density, pitch, size and spread, CUTOFF and RES, reverb amount, size and shimmer, the master effect amount, and the
+  SPIN speed and distance.
+* **DEPTH** – how far, and in which direction. On a level (DRY, DUB, DLY, TXT, MASTER) the modulator works as a gate: a full fader
+  lets the sound through and an empty one closes it by the DEPTH amount (a negative DEPTH turns that round). On every other control
+  the fader is added to where the knob stands (a negative DEPTH subtracts).
+* **DIV** – the length of one step, from a whole bar to a 32nd, with triplets.
+* **SPEED** – multiplies the step rate, from a quarter to sixteen times.
+* **LENGTH** – how many of the 16 steps play before the pattern starts again. Two modulators with different lengths drift against each other.
+* **GATE** – how long each step lasts: LNK (the whole step, joined to the next), LNG (three quarters) or SHT (one quarter).
+* **ATK, DEC, SUS, REL** – the shape of each step: how fast it rises, falls to its sustain level, and lets go.
+
+While the project plays the modulators follow the song position; with the transport stopped they run free at the project tempo.
+
+### GATES 1 and GATES 2
+
+One knob per step sets that step's own gate: SEQ (use the modulator's GATE), OFF (skip the step), SHT, LNG or LNK. The last two
+knobs, **DEST 2** and **DEPTH 2**, give the modulator a second control to move with the same pattern.
+
+## 9. FLOW
+
+* **GATE THR, GATE ATK, GATE REL, GATE FLR** – a noise gate on the input. THR at zero switches it off; raise it until hiss between
+  notes disappears. FLR is how much sound is still let through when the gate is closed.
+* **VINYL SPD** – the playback speed of the VINYL texture engine.
+* **FLT POS** – where the filter sits: OUT (on everything, at the end), IN (on the input, before the loop, delay and texture) or
+  MIX (after the delay and texture, before the reverb).
+* **FX POS** – the same for the master effect, plus LINK (it follows the filter).
+* **OUTPUT** – STEREO, or SPIN: the sound circles between left and right. **SPIN SPD** and **SPIN DST** set how fast and how wide.
+* **REV LIM** – a limiter on the reverb, for long shimmering tails.
+
+## 10. SOUND
+
+* **IN GAIN** – input level, up to 24 dB louder or quieter.
+* **GATE HOLD** – how long the input gate stays open after the sound drops under the threshold.
+* **WIDTH** – stereo width of the texture, from mono to full.
+* **DL RANGE** and **DL MS** – SYNC keeps the delay times as note values. MS turns LEFT and RIGHT into free times: the knobs span from
+  zero to DL MS milliseconds.
+* **SHIM PIT** – the pitch of the reverb's shimmer: an octave up, a fifth up, a fourth up or an octave down.
+* **TAPE FB** – feeds the reverb back into the delay, for echoes that bloom.
+* **REV NOISE** – a little noise into the reverb, for air.
+* **EXC FREQ** – where the exciter (MASTER FX) starts to add brightness.
+* **EDITOR** – shows or hides the address of the browser editor (see 13).
+
+## 11. TOUCH
+
+The bar at the top of the page is played with a finger. It has three zones side by side. Each zone can move up to three controls
+(**DEST A, B, C**) by the amounts **RANGE A, B, C**. **ZONE** chooses which zone's settings the knobs show.
+
+* **DRIVER** – X: the finger's place from left to right inside the zone. Y: its height in the bar.
+* **RELEASE** – HOLD keeps the last value when the finger lifts. RETURN lets it fall back.
+* **TOUCH X** – the finger's place as an ordinary control, so a Q-Link or automation can play the bar too.
+
+Out of the box zone 1 sweeps the filter, zone 2 raises the delay feedback and zone 3 opens the reverb.
+
+## 12. PRESET
+
+MORI has 65 factory presets and room for 964 of your own.
+
+* **The name at the top** – the current preset. The arrows beside it step to the previous and next one.
+* **PREV, NEXT, -10, +10** and the **PRESET** knob – move through the list. The data wheel works on the preset number too.
+* **SAVE NEW** – stores the sound as it is now as a new preset (USER 001, USER 002 and so on; rename it in the browser editor).
+* **OVERWRITE** – replaces the selected preset with the sound as it is now. **DELETE** removes it. Factory presets cannot be changed.
+
+Your presets are kept in the plugin's `user` folder on the Force and stay there when you install a new version of MORI. The factory
+presets are also listed in MPC's own PRESET menu.
+
+About half the factory bank are patterns made by the step modulators (Trance Gate, Sidechain Verb, Filter Stairs, Grain Melody,
+Vinyl Brake Bar, Poly Gates 16 x 12). The DUB loop presets start with REC on ADD: play into them, then turn REC to OFF to keep the loop.
+
+## 13. The browser editor
+
+MORI carries its own editor: a page you open in a browser on a phone, tablet or computer.
+
+1. Connect the Force to your network (Wi-Fi or cable) and load MORI.
+2. On the SOUND page press **EDITOR**. An address appears, for example `http://192.168.1.23:8765`. Press EDITOR again to hide it.
+3. On a device on the same network, type that address into a browser.
+
+What it does:
+
+* Every control of MORI, grouped like the pages. Moving one in the browser moves it on the Force, and moving one on the Force (screen,
+  Q-Link or automation) moves it in the browser.
+* **SEQ 1 / SEQ 2** – draw the 16 bars with a finger or the mouse, set each step's gate type, and keep patterns in 8 slots per
+  modulator (Save 1 to 8, Load 1 to 8).
+* **TOUCH** – the touch bar, playable from the browser.
+* **PRESETS** – the whole list. Click one to load it. Type a name and press Save new, or Rename selected. Overwrite and Delete work on
+  your own presets. **Export my presets** downloads them as a text file; **Import presets** adds the presets from such a file, so
+  they can be backed up and shared.
+
+Notes: the editor works only while MORI is loaded. It has no password, so anyone on the same network can open it. A second MORI in
+the same project gets the next address (8766, and so on).
+
+## 14. Using it musically
+
+**A trance gate from a pad.** SEQ 1: DEST DRY, DEPTH 100, DIV 1/16, GATE LNG. Draw a pattern with gaps. Add a dotted delay and a plate
+reverb so the gaps fill with echoes.
+
+**Sidechain without a compressor.** SEQ 1: DEST REV AMT, DEPTH about -70, DIV 1/16, four steps falling from full to empty, LENGTH 4.
+The reverb ducks on every beat and swells back.
+
+**A melody from one note.** FRAGMENT engine, PITCH at -12. SEQ 1: DEST GR PITCH, DEPTH 50, DIV 1/8. Fader heights become notes
+(a quarter of the way up is a fifth, half way an octave).
+
+**Tape stop at the end of the bar.** VINYL engine, DRY at zero. SEQ 1: DEST VINYL SPD, DEPTH -25, DIV 1/16, the last four faders
+rising. The sound slows to a halt and snaps back on the next bar.
+
+**Two patterns that drift.** SEQ 1 on DLY with LENGTH 16, SEQ 2 on TXT with LENGTH 12. They line up again only every three bars.
+
+**Play the bar.** On the TOUCH page slide a finger across zone 1 to sweep the filter, into zone 2 to push the echoes, into zone 3
+to open the reverb. Set a zone's RELEASE to RETURN for effects that fall back when you let go.
+
 
 **A dub echo on a snare or a vocal.** Put MORI on a send. Set DRY to zero. Set LEFT to 1/4 and RIGHT to 1/8 dotted, AMNESIA to about 50 percent, FDBACK to the left so each repeat gets darker, then add a little reverb. Ride the DLY level by hand to throw the echo only where you want it.
 
@@ -173,14 +302,15 @@ Only one of DLY>TEX and TXT>DLY has an effect at a time, depending on ORDER: in 
 
 **Rhythmic gating of the whole sound.** Use the Q-Links to move CUTOFF and RES while the effect plays, or automate them. A band-pass (TYPE: BP) with RES raised sweeps like a voice.
 
-## 9. Q-Links and automation
+## 15. Q-Links and automation
 
 Every control is a plugin parameter, so every one can be automated and every one can be reached from the Q-Links. The Q-Links 1 to 8
 take the first row of controls on the page, and 9 to 16 the second row, in the order shown on the screen.
 
-## 10. Tips
+## 16. Tips
 
 * Use MORI on a send, and set DRY to zero, so you can control how much of the effect you hear from the send level.
 * Start with ROUTING at its defaults and turn parts off one by one to learn what each contributes.
 * The feedback controls (AMNESIA, FRAGMENT FDBACK) build up. Raise them slowly.
-* The DUB loop and the delay are in time with the project tempo; the texture is not. The texture lengths are in seconds.
+* The DUB loop, the delay and the step modulators are in time with the project tempo; the texture is not. The texture lengths are in seconds.
+* If the band at the top says NO TEMPO, everything timed runs at 120 BPM.

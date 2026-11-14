@@ -189,7 +189,8 @@
    "name": "ENGINE",
    "options": [
     "M.HEAD",
-    "FRAGMENT"
+    "FRAGMENT",
+    "VINYL"
    ],
    "default": 0
   },
@@ -569,6 +570,1720 @@
     "TEX>DLY"
    ],
    "default": 0
+  },
+  {
+   "key": "preset",
+   "name": "PRESET",
+   "min": 0,
+   "max": 1023,
+   "default": 0,
+   "display": "int"
+  },
+  {
+   "key": "preset_name",
+   "name": "PRESET NAME",
+   "display": "string",
+   "min": 0,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "key": "ps_prev",
+   "name": "PREV",
+   "type": "trigger",
+   "momentary": true,
+   "step_of": "preset",
+   "step_delta": -1
+  },
+  {
+   "key": "ps_next",
+   "name": "NEXT",
+   "type": "trigger",
+   "momentary": true,
+   "step_of": "preset",
+   "step_delta": 1
+  },
+  {
+   "key": "ps_prev10",
+   "name": "-10",
+   "type": "trigger",
+   "momentary": true,
+   "step_of": "preset",
+   "step_delta": -10
+  },
+  {
+   "key": "ps_next10",
+   "name": "+10",
+   "type": "trigger",
+   "momentary": true,
+   "step_of": "preset",
+   "step_delta": 10
+  },
+  {
+   "key": "ps_save",
+   "name": "SAVE NEW",
+   "type": "trigger",
+   "momentary": true
+  },
+  {
+   "key": "ps_over",
+   "name": "OVERWRITE",
+   "type": "trigger",
+   "momentary": true
+  },
+  {
+   "key": "ps_del",
+   "name": "DELETE",
+   "type": "trigger",
+   "momentary": true
+  },
+  {
+   "key": "sq1_dest",
+   "name": "DEST",
+   "options": [
+    "OFF",
+    "DRY",
+    "DUB",
+    "DLY",
+    "TXT",
+    "DLY FBK",
+    "DLY TONE",
+    "TXT FLT",
+    "TXT FX",
+    "BOOST",
+    "VINYL SPD",
+    "DENSITY",
+    "GR PITCH",
+    "GR SIZE",
+    "SPREAD",
+    "CUTOFF",
+    "RES",
+    "REV AMT",
+    "REV DIM",
+    "SHIMMER",
+    "M.AMT",
+    "SPIN SPD",
+    "SPIN DST",
+    "MASTER"
+   ],
+   "default": 0
+  },
+  {
+   "key": "sq1_amt",
+   "name": "DEPTH",
+   "min": -100,
+   "max": 100,
+   "default": 50,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "sq1_div",
+   "name": "DIV",
+   "options": [
+    "1/1",
+    "1/2",
+    "1/4",
+    "1/8",
+    "1/16",
+    "1/32",
+    "1/4 T",
+    "1/8 T",
+    "1/16 T"
+   ],
+   "default": 3
+  },
+  {
+   "key": "sq1_len",
+   "name": "LENGTH",
+   "min": 1,
+   "max": 16,
+   "default": 16,
+   "display": "int"
+  },
+  {
+   "key": "sq1_gate",
+   "name": "GATE",
+   "options": [
+    "LNK",
+    "LNG",
+    "SHT"
+   ],
+   "default": 0
+  },
+  {
+   "key": "sq1_atk",
+   "name": "ATK",
+   "min": 0,
+   "max": 100,
+   "default": 5,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "sq1_dec",
+   "name": "DEC",
+   "min": 0,
+   "max": 100,
+   "default": 30,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "sq1_sus",
+   "name": "SUS",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "sq1_rel",
+   "name": "REL",
+   "min": 0,
+   "max": 100,
+   "default": 20,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s1_1",
+   "name": "STEP 1",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s1_2",
+   "name": "STEP 2",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s1_3",
+   "name": "STEP 3",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s1_4",
+   "name": "STEP 4",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s1_5",
+   "name": "STEP 5",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s1_6",
+   "name": "STEP 6",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s1_7",
+   "name": "STEP 7",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s1_8",
+   "name": "STEP 8",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s1_9",
+   "name": "STEP 9",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s1_10",
+   "name": "STEP 10",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s1_11",
+   "name": "STEP 11",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s1_12",
+   "name": "STEP 12",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s1_13",
+   "name": "STEP 13",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s1_14",
+   "name": "STEP 14",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s1_15",
+   "name": "STEP 15",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s1_16",
+   "name": "STEP 16",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "sq2_dest",
+   "name": "DEST",
+   "options": [
+    "OFF",
+    "DRY",
+    "DUB",
+    "DLY",
+    "TXT",
+    "DLY FBK",
+    "DLY TONE",
+    "TXT FLT",
+    "TXT FX",
+    "BOOST",
+    "VINYL SPD",
+    "DENSITY",
+    "GR PITCH",
+    "GR SIZE",
+    "SPREAD",
+    "CUTOFF",
+    "RES",
+    "REV AMT",
+    "REV DIM",
+    "SHIMMER",
+    "M.AMT",
+    "SPIN SPD",
+    "SPIN DST",
+    "MASTER"
+   ],
+   "default": 0
+  },
+  {
+   "key": "sq2_amt",
+   "name": "DEPTH",
+   "min": -100,
+   "max": 100,
+   "default": 50,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "sq2_div",
+   "name": "DIV",
+   "options": [
+    "1/1",
+    "1/2",
+    "1/4",
+    "1/8",
+    "1/16",
+    "1/32",
+    "1/4 T",
+    "1/8 T",
+    "1/16 T"
+   ],
+   "default": 3
+  },
+  {
+   "key": "sq2_len",
+   "name": "LENGTH",
+   "min": 1,
+   "max": 16,
+   "default": 16,
+   "display": "int"
+  },
+  {
+   "key": "sq2_gate",
+   "name": "GATE",
+   "options": [
+    "LNK",
+    "LNG",
+    "SHT"
+   ],
+   "default": 0
+  },
+  {
+   "key": "sq2_atk",
+   "name": "ATK",
+   "min": 0,
+   "max": 100,
+   "default": 5,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "sq2_dec",
+   "name": "DEC",
+   "min": 0,
+   "max": 100,
+   "default": 30,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "sq2_sus",
+   "name": "SUS",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "sq2_rel",
+   "name": "REL",
+   "min": 0,
+   "max": 100,
+   "default": 20,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s2_1",
+   "name": "STEP 1",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s2_2",
+   "name": "STEP 2",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s2_3",
+   "name": "STEP 3",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s2_4",
+   "name": "STEP 4",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s2_5",
+   "name": "STEP 5",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s2_6",
+   "name": "STEP 6",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s2_7",
+   "name": "STEP 7",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s2_8",
+   "name": "STEP 8",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s2_9",
+   "name": "STEP 9",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s2_10",
+   "name": "STEP 10",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s2_11",
+   "name": "STEP 11",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s2_12",
+   "name": "STEP 12",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s2_13",
+   "name": "STEP 13",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s2_14",
+   "name": "STEP 14",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s2_15",
+   "name": "STEP 15",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "s2_16",
+   "name": "STEP 16",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "gt_thr",
+   "name": "GATE THR",
+   "min": 0,
+   "max": 100,
+   "default": 0,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "gt_atk",
+   "name": "GATE ATK",
+   "min": 0,
+   "max": 100,
+   "default": 10,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "gt_rel",
+   "name": "GATE REL",
+   "min": 0,
+   "max": 100,
+   "default": 30,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "gt_flr",
+   "name": "GATE FLR",
+   "min": 0,
+   "max": 100,
+   "default": 0,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "flt_pos",
+   "name": "FLT POS",
+   "options": [
+    "OUT",
+    "IN",
+    "MIX"
+   ],
+   "default": 0
+  },
+  {
+   "key": "mf_pos",
+   "name": "FX POS",
+   "options": [
+    "OUT",
+    "IN",
+    "MIX",
+    "LINK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "out_mode",
+   "name": "OUTPUT",
+   "options": [
+    "STEREO",
+    "SPIN"
+   ],
+   "default": 0
+  },
+  {
+   "key": "sp_speed",
+   "name": "SPIN SPD",
+   "min": 0,
+   "max": 100,
+   "default": 30,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "sp_dist",
+   "name": "SPIN DST",
+   "min": 0,
+   "max": 100,
+   "default": 60,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "rv_lim",
+   "name": "REV LIM",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 0
+  },
+  {
+   "key": "tx_speed",
+   "name": "VINYL SPD",
+   "min": -200,
+   "max": 200,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "sq1_spd",
+   "name": "SPEED",
+   "options": [
+    "/4",
+    "/2",
+    "x1",
+    "x2",
+    "x4",
+    "x8",
+    "x16"
+   ],
+   "default": 2
+  },
+  {
+   "key": "sq1_dest2",
+   "name": "DEST 2",
+   "options": [
+    "OFF",
+    "DRY",
+    "DUB",
+    "DLY",
+    "TXT",
+    "DLY FBK",
+    "DLY TONE",
+    "TXT FLT",
+    "TXT FX",
+    "BOOST",
+    "VINYL SPD",
+    "DENSITY",
+    "GR PITCH",
+    "GR SIZE",
+    "SPREAD",
+    "CUTOFF",
+    "RES",
+    "REV AMT",
+    "REV DIM",
+    "SHIMMER",
+    "M.AMT",
+    "SPIN SPD",
+    "SPIN DST",
+    "MASTER"
+   ],
+   "default": 0
+  },
+  {
+   "key": "sq1_amt2",
+   "name": "DEPTH 2",
+   "min": -100,
+   "max": 100,
+   "default": 50,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "t1_1",
+   "name": "TYPE 1",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t1_2",
+   "name": "TYPE 2",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t1_3",
+   "name": "TYPE 3",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t1_4",
+   "name": "TYPE 4",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t1_5",
+   "name": "TYPE 5",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t1_6",
+   "name": "TYPE 6",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t1_7",
+   "name": "TYPE 7",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t1_8",
+   "name": "TYPE 8",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t1_9",
+   "name": "TYPE 9",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t1_10",
+   "name": "TYPE 10",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t1_11",
+   "name": "TYPE 11",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t1_12",
+   "name": "TYPE 12",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t1_13",
+   "name": "TYPE 13",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t1_14",
+   "name": "TYPE 14",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t1_15",
+   "name": "TYPE 15",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t1_16",
+   "name": "TYPE 16",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "sq2_spd",
+   "name": "SPEED",
+   "options": [
+    "/4",
+    "/2",
+    "x1",
+    "x2",
+    "x4",
+    "x8",
+    "x16"
+   ],
+   "default": 2
+  },
+  {
+   "key": "sq2_dest2",
+   "name": "DEST 2",
+   "options": [
+    "OFF",
+    "DRY",
+    "DUB",
+    "DLY",
+    "TXT",
+    "DLY FBK",
+    "DLY TONE",
+    "TXT FLT",
+    "TXT FX",
+    "BOOST",
+    "VINYL SPD",
+    "DENSITY",
+    "GR PITCH",
+    "GR SIZE",
+    "SPREAD",
+    "CUTOFF",
+    "RES",
+    "REV AMT",
+    "REV DIM",
+    "SHIMMER",
+    "M.AMT",
+    "SPIN SPD",
+    "SPIN DST",
+    "MASTER"
+   ],
+   "default": 0
+  },
+  {
+   "key": "sq2_amt2",
+   "name": "DEPTH 2",
+   "min": -100,
+   "max": 100,
+   "default": 50,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "t2_1",
+   "name": "TYPE 1",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t2_2",
+   "name": "TYPE 2",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t2_3",
+   "name": "TYPE 3",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t2_4",
+   "name": "TYPE 4",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t2_5",
+   "name": "TYPE 5",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t2_6",
+   "name": "TYPE 6",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t2_7",
+   "name": "TYPE 7",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t2_8",
+   "name": "TYPE 8",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t2_9",
+   "name": "TYPE 9",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t2_10",
+   "name": "TYPE 10",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t2_11",
+   "name": "TYPE 11",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t2_12",
+   "name": "TYPE 12",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t2_13",
+   "name": "TYPE 13",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t2_14",
+   "name": "TYPE 14",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t2_15",
+   "name": "TYPE 15",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "t2_16",
+   "name": "TYPE 16",
+   "options": [
+    "SEQ",
+    "OFF",
+    "SHT",
+    "LNG",
+    "LNK"
+   ],
+   "default": 0
+  },
+  {
+   "key": "in_gain",
+   "name": "IN GAIN",
+   "min": -24,
+   "max": 24,
+   "default": 0,
+   "display": "int",
+   "unit": "dB"
+  },
+  {
+   "key": "gt_hold",
+   "name": "GATE HOLD",
+   "min": 0,
+   "max": 100,
+   "default": 0,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "tx_width",
+   "name": "WIDTH",
+   "min": 0,
+   "max": 100,
+   "default": 100,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "dl_range",
+   "name": "DL RANGE",
+   "options": [
+    "SYNC",
+    "MS"
+   ],
+   "default": 0
+  },
+  {
+   "key": "dl_ms",
+   "name": "DL MS",
+   "min": 50,
+   "max": 4000,
+   "default": 1000,
+   "display": "int",
+   "unit": "ms"
+  },
+  {
+   "key": "rv_shp",
+   "name": "SHIM PIT",
+   "options": [
+    "+12",
+    "+7",
+    "+5",
+    "-12"
+   ],
+   "default": 0
+  },
+  {
+   "key": "rv_tfb",
+   "name": "TAPE FB",
+   "min": 0,
+   "max": 100,
+   "default": 0,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "rv_noise",
+   "name": "REV NOISE",
+   "min": 0,
+   "max": 100,
+   "default": 0,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "mf_freq",
+   "name": "EXC FREQ",
+   "min": 0,
+   "max": 100,
+   "default": 50,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "tch_x",
+   "name": "TOUCH X",
+   "min": -5,
+   "max": 5,
+   "default": 0
+  },
+  {
+   "key": "tch_y",
+   "name": "TOUCH Y",
+   "min": -5,
+   "max": 5,
+   "default": 0
+  },
+  {
+   "key": "tz_sel",
+   "name": "ZONE",
+   "options": [
+    "Z1",
+    "Z2",
+    "Z3"
+   ],
+   "default": 0
+  },
+  {
+   "key": "tz1_da",
+   "name": "DEST A",
+   "options": [
+    "OFF",
+    "DRY",
+    "DUB",
+    "DLY",
+    "TXT",
+    "DLY FBK",
+    "DLY TONE",
+    "TXT FLT",
+    "TXT FX",
+    "BOOST",
+    "VINYL SPD",
+    "DENSITY",
+    "GR PITCH",
+    "GR SIZE",
+    "SPREAD",
+    "CUTOFF",
+    "RES",
+    "REV AMT",
+    "REV DIM",
+    "SHIMMER",
+    "M.AMT",
+    "SPIN SPD",
+    "SPIN DST",
+    "MASTER"
+   ],
+   "default": 15
+  },
+  {
+   "key": "tz1_ra",
+   "name": "RANGE A",
+   "min": -100,
+   "max": 100,
+   "default": 60,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "tz1_db",
+   "name": "DEST B",
+   "options": [
+    "OFF",
+    "DRY",
+    "DUB",
+    "DLY",
+    "TXT",
+    "DLY FBK",
+    "DLY TONE",
+    "TXT FLT",
+    "TXT FX",
+    "BOOST",
+    "VINYL SPD",
+    "DENSITY",
+    "GR PITCH",
+    "GR SIZE",
+    "SPREAD",
+    "CUTOFF",
+    "RES",
+    "REV AMT",
+    "REV DIM",
+    "SHIMMER",
+    "M.AMT",
+    "SPIN SPD",
+    "SPIN DST",
+    "MASTER"
+   ],
+   "default": 0
+  },
+  {
+   "key": "tz1_rb",
+   "name": "RANGE B",
+   "min": -100,
+   "max": 100,
+   "default": 50,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "tz1_dc",
+   "name": "DEST C",
+   "options": [
+    "OFF",
+    "DRY",
+    "DUB",
+    "DLY",
+    "TXT",
+    "DLY FBK",
+    "DLY TONE",
+    "TXT FLT",
+    "TXT FX",
+    "BOOST",
+    "VINYL SPD",
+    "DENSITY",
+    "GR PITCH",
+    "GR SIZE",
+    "SPREAD",
+    "CUTOFF",
+    "RES",
+    "REV AMT",
+    "REV DIM",
+    "SHIMMER",
+    "M.AMT",
+    "SPIN SPD",
+    "SPIN DST",
+    "MASTER"
+   ],
+   "default": 0
+  },
+  {
+   "key": "tz1_rc",
+   "name": "RANGE C",
+   "min": -100,
+   "max": 100,
+   "default": 50,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "tz1_drv",
+   "name": "DRIVER",
+   "options": [
+    "X",
+    "Y"
+   ],
+   "default": 0
+  },
+  {
+   "key": "tz1_rel",
+   "name": "RELEASE",
+   "options": [
+    "HOLD",
+    "RETURN"
+   ],
+   "default": 1
+  },
+  {
+   "key": "tz2_da",
+   "name": "DEST A",
+   "options": [
+    "OFF",
+    "DRY",
+    "DUB",
+    "DLY",
+    "TXT",
+    "DLY FBK",
+    "DLY TONE",
+    "TXT FLT",
+    "TXT FX",
+    "BOOST",
+    "VINYL SPD",
+    "DENSITY",
+    "GR PITCH",
+    "GR SIZE",
+    "SPREAD",
+    "CUTOFF",
+    "RES",
+    "REV AMT",
+    "REV DIM",
+    "SHIMMER",
+    "M.AMT",
+    "SPIN SPD",
+    "SPIN DST",
+    "MASTER"
+   ],
+   "default": 5
+  },
+  {
+   "key": "tz2_ra",
+   "name": "RANGE A",
+   "min": -100,
+   "max": 100,
+   "default": 60,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "tz2_db",
+   "name": "DEST B",
+   "options": [
+    "OFF",
+    "DRY",
+    "DUB",
+    "DLY",
+    "TXT",
+    "DLY FBK",
+    "DLY TONE",
+    "TXT FLT",
+    "TXT FX",
+    "BOOST",
+    "VINYL SPD",
+    "DENSITY",
+    "GR PITCH",
+    "GR SIZE",
+    "SPREAD",
+    "CUTOFF",
+    "RES",
+    "REV AMT",
+    "REV DIM",
+    "SHIMMER",
+    "M.AMT",
+    "SPIN SPD",
+    "SPIN DST",
+    "MASTER"
+   ],
+   "default": 0
+  },
+  {
+   "key": "tz2_rb",
+   "name": "RANGE B",
+   "min": -100,
+   "max": 100,
+   "default": 50,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "tz2_dc",
+   "name": "DEST C",
+   "options": [
+    "OFF",
+    "DRY",
+    "DUB",
+    "DLY",
+    "TXT",
+    "DLY FBK",
+    "DLY TONE",
+    "TXT FLT",
+    "TXT FX",
+    "BOOST",
+    "VINYL SPD",
+    "DENSITY",
+    "GR PITCH",
+    "GR SIZE",
+    "SPREAD",
+    "CUTOFF",
+    "RES",
+    "REV AMT",
+    "REV DIM",
+    "SHIMMER",
+    "M.AMT",
+    "SPIN SPD",
+    "SPIN DST",
+    "MASTER"
+   ],
+   "default": 0
+  },
+  {
+   "key": "tz2_rc",
+   "name": "RANGE C",
+   "min": -100,
+   "max": 100,
+   "default": 50,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "tz2_drv",
+   "name": "DRIVER",
+   "options": [
+    "X",
+    "Y"
+   ],
+   "default": 0
+  },
+  {
+   "key": "tz2_rel",
+   "name": "RELEASE",
+   "options": [
+    "HOLD",
+    "RETURN"
+   ],
+   "default": 1
+  },
+  {
+   "key": "tz3_da",
+   "name": "DEST A",
+   "options": [
+    "OFF",
+    "DRY",
+    "DUB",
+    "DLY",
+    "TXT",
+    "DLY FBK",
+    "DLY TONE",
+    "TXT FLT",
+    "TXT FX",
+    "BOOST",
+    "VINYL SPD",
+    "DENSITY",
+    "GR PITCH",
+    "GR SIZE",
+    "SPREAD",
+    "CUTOFF",
+    "RES",
+    "REV AMT",
+    "REV DIM",
+    "SHIMMER",
+    "M.AMT",
+    "SPIN SPD",
+    "SPIN DST",
+    "MASTER"
+   ],
+   "default": 17
+  },
+  {
+   "key": "tz3_ra",
+   "name": "RANGE A",
+   "min": -100,
+   "max": 100,
+   "default": 60,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "tz3_db",
+   "name": "DEST B",
+   "options": [
+    "OFF",
+    "DRY",
+    "DUB",
+    "DLY",
+    "TXT",
+    "DLY FBK",
+    "DLY TONE",
+    "TXT FLT",
+    "TXT FX",
+    "BOOST",
+    "VINYL SPD",
+    "DENSITY",
+    "GR PITCH",
+    "GR SIZE",
+    "SPREAD",
+    "CUTOFF",
+    "RES",
+    "REV AMT",
+    "REV DIM",
+    "SHIMMER",
+    "M.AMT",
+    "SPIN SPD",
+    "SPIN DST",
+    "MASTER"
+   ],
+   "default": 0
+  },
+  {
+   "key": "tz3_rb",
+   "name": "RANGE B",
+   "min": -100,
+   "max": 100,
+   "default": 50,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "tz3_dc",
+   "name": "DEST C",
+   "options": [
+    "OFF",
+    "DRY",
+    "DUB",
+    "DLY",
+    "TXT",
+    "DLY FBK",
+    "DLY TONE",
+    "TXT FLT",
+    "TXT FX",
+    "BOOST",
+    "VINYL SPD",
+    "DENSITY",
+    "GR PITCH",
+    "GR SIZE",
+    "SPREAD",
+    "CUTOFF",
+    "RES",
+    "REV AMT",
+    "REV DIM",
+    "SHIMMER",
+    "M.AMT",
+    "SPIN SPD",
+    "SPIN DST",
+    "MASTER"
+   ],
+   "default": 0
+  },
+  {
+   "key": "tz3_rc",
+   "name": "RANGE C",
+   "min": -100,
+   "max": 100,
+   "default": 50,
+   "display": "int",
+   "unit": "%"
+  },
+  {
+   "key": "tz3_drv",
+   "name": "DRIVER",
+   "options": [
+    "X",
+    "Y"
+   ],
+   "default": 0
+  },
+  {
+   "key": "tz3_rel",
+   "name": "RELEASE",
+   "options": [
+    "HOLD",
+    "RETURN"
+   ],
+   "default": 1
+  },
+  {
+   "key": "ed_addr",
+   "name": "EDITOR",
+   "display": "string",
+   "min": 0,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "key": "st_info",
+   "name": "STATUS",
+   "display": "string",
+   "min": 0,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "key": "ed_show",
+   "name": "EDITOR",
+   "options": [
+    "OFF",
+    "ON"
+   ],
+   "default": 0
   }
  ],
  "sections": [
@@ -673,6 +2388,198 @@
     "r_tr",
     "r_td",
     "order"
+   ]
+  },
+  {
+   "label": "PRESET",
+   "keys": [
+    "preset",
+    "preset_name",
+    "ps_prev",
+    "ps_next",
+    "ps_prev10",
+    "ps_next10",
+    "ps_save",
+    "ps_over",
+    "ps_del"
+   ]
+  },
+  {
+   "label": "SEQ 1",
+   "keys": [
+    "sq1_dest",
+    "sq1_amt",
+    "sq1_div",
+    "sq1_len",
+    "sq1_gate",
+    "sq1_atk",
+    "sq1_dec",
+    "sq1_sus",
+    "sq1_rel",
+    "s1_1",
+    "s1_2",
+    "s1_3",
+    "s1_4",
+    "s1_5",
+    "s1_6",
+    "s1_7",
+    "s1_8",
+    "s1_9",
+    "s1_10",
+    "s1_11",
+    "s1_12",
+    "s1_13",
+    "s1_14",
+    "s1_15",
+    "s1_16"
+   ]
+  },
+  {
+   "label": "SEQ 2",
+   "keys": [
+    "sq2_dest",
+    "sq2_amt",
+    "sq2_div",
+    "sq2_len",
+    "sq2_gate",
+    "sq2_atk",
+    "sq2_dec",
+    "sq2_sus",
+    "sq2_rel",
+    "s2_1",
+    "s2_2",
+    "s2_3",
+    "s2_4",
+    "s2_5",
+    "s2_6",
+    "s2_7",
+    "s2_8",
+    "s2_9",
+    "s2_10",
+    "s2_11",
+    "s2_12",
+    "s2_13",
+    "s2_14",
+    "s2_15",
+    "s2_16"
+   ]
+  },
+  {
+   "label": "FLOW",
+   "keys": [
+    "gt_thr",
+    "gt_atk",
+    "gt_rel",
+    "gt_flr",
+    "flt_pos",
+    "mf_pos",
+    "out_mode",
+    "sp_speed",
+    "sp_dist",
+    "rv_lim",
+    "tx_speed"
+   ]
+  },
+  {
+   "label": "SEQ 1 GATES",
+   "keys": [
+    "sq1_spd",
+    "sq1_dest2",
+    "sq1_amt2",
+    "t1_1",
+    "t1_2",
+    "t1_3",
+    "t1_4",
+    "t1_5",
+    "t1_6",
+    "t1_7",
+    "t1_8",
+    "t1_9",
+    "t1_10",
+    "t1_11",
+    "t1_12",
+    "t1_13",
+    "t1_14",
+    "t1_15",
+    "t1_16"
+   ]
+  },
+  {
+   "label": "SEQ 2 GATES",
+   "keys": [
+    "sq2_spd",
+    "sq2_dest2",
+    "sq2_amt2",
+    "t2_1",
+    "t2_2",
+    "t2_3",
+    "t2_4",
+    "t2_5",
+    "t2_6",
+    "t2_7",
+    "t2_8",
+    "t2_9",
+    "t2_10",
+    "t2_11",
+    "t2_12",
+    "t2_13",
+    "t2_14",
+    "t2_15",
+    "t2_16"
+   ]
+  },
+  {
+   "label": "SOUND",
+   "keys": [
+    "in_gain",
+    "gt_hold",
+    "tx_width",
+    "dl_range",
+    "dl_ms",
+    "rv_shp",
+    "rv_tfb",
+    "rv_noise",
+    "mf_freq"
+   ]
+  },
+  {
+   "label": "TOUCH",
+   "keys": [
+    "tch_x",
+    "tch_y",
+    "tz_sel",
+    "tz1_da",
+    "tz1_ra",
+    "tz1_db",
+    "tz1_rb",
+    "tz1_dc",
+    "tz1_rc",
+    "tz1_drv",
+    "tz1_rel",
+    "tz2_da",
+    "tz2_ra",
+    "tz2_db",
+    "tz2_rb",
+    "tz2_dc",
+    "tz2_rc",
+    "tz2_drv",
+    "tz2_rel",
+    "tz3_da",
+    "tz3_ra",
+    "tz3_db",
+    "tz3_rb",
+    "tz3_dc",
+    "tz3_rc",
+    "tz3_drv",
+    "tz3_rel"
+   ]
+  },
+  {
+   "label": "INFO",
+   "keys": [
+    "ed_addr",
+    "st_info",
+    "ed_show"
    ]
   }
  ]
